@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia - Sociout", "SocialMedia - Sociout\SocialMedia - Sociout.csproj", "{88E7BBBF-73A3-43AB-9B1A-1A153FACA33B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88E7BBBF-73A3-43AB-9B1A-1A153FACA33B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88E7BBBF-73A3-43AB-9B1A-1A153FACA33B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88E7BBBF-73A3-43AB-9B1A-1A153FACA33B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88E7BBBF-73A3-43AB-9B1A-1A153FACA33B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC2A3DC0-C203-487E-B26D-457DFFE1282B}
+	EndGlobalSection
+EndGlobal
