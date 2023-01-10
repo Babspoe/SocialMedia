@@ -16,6 +16,15 @@ namespace dbLibrary
         public string naam { get; set; }
         public string waarde { get; set; }
     }
+
+    public class gebruiker
+    {
+        public string id { get; set; }
+        public string Gebruikersnaam { get; set; }
+        public string Email { get; set; }
+        public string Wachtwoord { get; set; }
+        public byte[] Afbeelding { get; set; }
+    }
     public class dbFunctions
     {
         private MySqlConnection connection;
@@ -30,9 +39,10 @@ namespace dbLibrary
         private void Initialize()
         {
             string server = "localhost";
-            string database = "sakila";
+            string database = "socialmedia";
             string uid = "root";
             string password = "";
+
             string connectionString;
             connectionString =
                 "SERVER=" + server + ";" +
@@ -87,8 +97,36 @@ namespace dbLibrary
             return list;
         }
 
+        public gebruiker SelectGebruiker()
+        {
+            string query = "SELECT * FROM `table` WHERE 1";
+
+            //List<dbResponse> list = new List<dbResponse>();
+            gebruiker ret = new gebruiker();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                dbResponse newdbResponse = new dbResponse()
+                {
+                    id = dataReader["id"] + "",
+                    naam = dataReader["naam"] + "",
+                    waarde = dataReader["waarde"] + "",
+                };
+                list.Add(newdbResponse);
+            }
+            dataReader.Close();
+
+            connection.Close();
+
+            return list;
+        }
+
         //Insert statement
-        public void InsertNewProduct(string[] insert, byte[] img)
+        public void Insert(string[] insert, byte[] img)
         {
             string query = "INSERT INTO `table`(`kolom`, `kolom`) VALUES ('" + insert[0] + "','" + insert[1] + "')";
             connection.Open();
@@ -98,6 +136,20 @@ namespace dbLibrary
 
             //image
             UpdateProductImg(img, insert[0]);
+
+            connection.Close();
+        }
+
+        public void InsertGebruiker(gebruiker insert)//, byte[] img
+        {
+            string query = "INSERT INTO `gebruiker`(`Gebruikersnaam`, `Email`, `Wachtwoord`) VALUES ('"+insert.Gebruikersnaam+ "','"+insert.Email+ "','"+insert.Wachtwoord+"')";
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
+
+            //image
+            //UpdateProductImg(img, insert[0]);
 
             connection.Close();
         }
