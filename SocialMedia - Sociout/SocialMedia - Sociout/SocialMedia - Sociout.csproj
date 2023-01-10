@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Sociout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sociout.Designer.cs">
+      <DependentUpon>Sociout.cs</DependentUpon>
+    </Compile>
     <Compile Include="InlogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Sociout.resx">
+      <DependentUpon>Sociout.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +87,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dbLibrary\dbLibrary.csproj">
+      <Project>{246cb2fe-1bc2-4d27-81b0-387497d16f72}</Project>
+      <Name>dbLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
