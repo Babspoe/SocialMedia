@@ -16,5 +16,18 @@ namespace SocialMedia___Sociout
         {
             InitializeComponent();
         }
+
+        //Voor de tabpages de tekst horizontaal zettens
+        private void tcPaginas_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var g = e.Graphics;
+            var text = this.tcPaginas.TabPages[e.Index].Text;
+            var sizeText = g.MeasureString(text, this.tcPaginas.Font);
+
+            var x = e.Bounds.Left + 3;
+            var y = e.Bounds.Top + (e.Bounds.Height - sizeText.Height) / 2;
+
+            g.DrawString(text, this.tcPaginas.Font, Brushes.Black, x, y);
+        }
     }
 }
