@@ -35,6 +35,7 @@
             this.tpPersoonlijk = new System.Windows.Forms.TabPage();
             this.tpVolgend = new System.Windows.Forms.TabPage();
             this.tpLiked = new System.Windows.Forms.TabPage();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfiel)).BeginInit();
             this.tcPaginas.SuspendLayout();
@@ -42,6 +43,7 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.Controls.Add(this.txtSearch);
             this.pnlHeader.Controls.Add(this.pbProfiel);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
@@ -120,6 +122,17 @@
             this.tpLiked.Text = "Liked";
             this.tpLiked.UseVisualStyleBackColor = true;
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.txtSearch.Location = new System.Drawing.Point(648, 22);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(130, 23);
+            this.txtSearch.TabIndex = 1;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
+            // 
             // Sociout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,5 +160,6 @@
         private System.Windows.Forms.TabPage tpPersoonlijk;
         private System.Windows.Forms.TabPage tpVolgend;
         private System.Windows.Forms.TabPage tpLiked;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

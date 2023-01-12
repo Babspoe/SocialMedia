@@ -29,5 +29,14 @@ namespace SocialMedia___Sociout
 
             g.DrawString(text, this.tcPaginas.Font, Brushes.Black, x, y);
         }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //Laat de zoekresultatenpage zien
+                MessageBox.Show("Je klikte op Enter", "Zoeken");
+            }
+        }
     }
 }
