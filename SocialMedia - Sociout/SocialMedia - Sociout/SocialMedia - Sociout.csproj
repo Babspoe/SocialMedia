@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StaticFunctions.cs" />
     <Compile Include="Sociout.cs">
       <SubType>Form</SubType>
     </Compile>

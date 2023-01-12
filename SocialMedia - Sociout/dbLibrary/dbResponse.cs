@@ -25,6 +25,15 @@ namespace dbLibrary
         public string Wachtwoord { get; set; }
         public byte[] Afbeelding { get; set; }
     }
+
+    public class bericht
+    {
+        public int id { get; set; }
+        public string Tekst { get; set; }
+        public byte[] Afbeelding { get; set; }
+        public int Likes { get; set; }
+        public gebruiker gebruiker { get; set; }
+    }
     public class dbFunctions
     {
         private MySqlConnection connection;
@@ -120,7 +129,45 @@ namespace dbLibrary
             return ret;
         }
 
-        public gebruiker SelectGebruikerX()
+        public List<bericht> SelectBericht()
+        {
+            string query = 
+@"SELECT b.id,COUNT(*) Likes, b.Afbeelding ,Tekst, g.Afbeelding pfp, g.Gebruikersnaam, b.Gebruiker_Id FROM bericht b
+INNER JOIN (`like` l, gebruiker g) ON (b.id = l.Bericht_Id AND b.Gebruiker_Id = g.Id )
+WHERE b.Bericht_Id = 0";
+
+            List<bericht> list = new List<bericht>();
+            //gebruiker ret = new gebruiker();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                bericht newdbResponse = new bericht()
+                {
+                    id = (int)dataReader["id"],
+                    Tekst = (string)dataReader["Tekst"],
+                    Afbeelding = dataReader["Afbeelding"] == DBNull.Value ? null : (byte[])dataReader["Afbeelding"],
+                    Likes = Convert.ToInt32((dataReader["Likes"])),
+                    gebruiker = new gebruiker
+                    {
+                        id = ((int)dataReader["Gebruiker_Id"]).ToString(),
+                        Gebruikersnaam = (string)dataReader["Gebruikersnaam"],
+                        Afbeelding = dataReader["pfp"] == DBNull.Value ? null : (byte[])dataReader["pfp"]
+                    }
+                };
+                list.Add(newdbResponse);
+            }
+            dataReader.Close();
+
+            connection.Close();
+
+            return list;
+        }
+
+        public gebruiker SelectGebruiker()
         {
             string query = "SELECT * FROM `table` WHERE 1";
 
@@ -133,13 +180,19 @@ namespace dbLibrary
 
             while (dataReader.Read())
             {
-                
+                dbResponse newdbResponse = new dbResponse()
+                {
+                    id = dataReader["id"] + "",
+                    naam = dataReader["naam"] + "",
+                    waarde = dataReader["waarde"] + "",
+                };
+                //list.Add(newdbResponse);
             }
             dataReader.Close();
 
             connection.Close();
 
-            return ret;
+            return new gebruiker();
         }
 
         //Insert statement

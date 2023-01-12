@@ -72,4 +72,4 @@ C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia
 C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia - Sociout.csproj.CopyComplete
 C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia - Sociout.exe
 C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia - Sociout.pdb
-C:\Users\HP850G5\Source\Repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia___Sociout.User_Controls.PostUserControl.resources
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia___Sociout.User_Controls.PostUserControl.resources
