@@ -35,16 +35,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbNaam = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tbREmail = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbRWachtwoordHerhaal = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnTerug = new System.Windows.Forms.Button();
             this.btnRRegistreren = new System.Windows.Forms.Button();
             this.tbRWachtwoord = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbRNaam = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnTerug = new System.Windows.Forms.Button();
-            this.tbRWachtwoordHerhaal = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tbREmail = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -141,6 +141,53 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Gebruikersnaam:";
             // 
+            // tbREmail
+            // 
+            this.tbREmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbREmail.Location = new System.Drawing.Point(69, 195);
+            this.tbREmail.Name = "tbREmail";
+            this.tbREmail.Size = new System.Drawing.Size(245, 30);
+            this.tbREmail.TabIndex = 20;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(64, 167);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 25);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Email:";
+            // 
+            // tbRWachtwoordHerhaal
+            // 
+            this.tbRWachtwoordHerhaal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbRWachtwoordHerhaal.Location = new System.Drawing.Point(69, 338);
+            this.tbRWachtwoordHerhaal.Name = "tbRWachtwoordHerhaal";
+            this.tbRWachtwoordHerhaal.Size = new System.Drawing.Size(245, 30);
+            this.tbRWachtwoordHerhaal.TabIndex = 18;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(64, 310);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(209, 25);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Wachtwoord herhalen:";
+            // 
+            // btnTerug
+            // 
+            this.btnTerug.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTerug.Location = new System.Drawing.Point(3, 3);
+            this.btnTerug.Name = "btnTerug";
+            this.btnTerug.Size = new System.Drawing.Size(157, 41);
+            this.btnTerug.TabIndex = 16;
+            this.btnTerug.Text = "Terug";
+            this.btnTerug.UseVisualStyleBackColor = true;
+            this.btnTerug.Click += new System.EventHandler(this.btnTerug_Click);
+            // 
             // btnRRegistreren
             // 
             this.btnRRegistreren.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -187,53 +234,6 @@
             this.label4.Size = new System.Drawing.Size(162, 25);
             this.label4.TabIndex = 11;
             this.label4.Text = "Gebruikersnaam:";
-            // 
-            // btnTerug
-            // 
-            this.btnTerug.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTerug.Location = new System.Drawing.Point(3, 3);
-            this.btnTerug.Name = "btnTerug";
-            this.btnTerug.Size = new System.Drawing.Size(157, 41);
-            this.btnTerug.TabIndex = 16;
-            this.btnTerug.Text = "Terug";
-            this.btnTerug.UseVisualStyleBackColor = true;
-            this.btnTerug.Click += new System.EventHandler(this.btnTerug_Click);
-            // 
-            // tbRWachtwoordHerhaal
-            // 
-            this.tbRWachtwoordHerhaal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRWachtwoordHerhaal.Location = new System.Drawing.Point(69, 338);
-            this.tbRWachtwoordHerhaal.Name = "tbRWachtwoordHerhaal";
-            this.tbRWachtwoordHerhaal.Size = new System.Drawing.Size(245, 30);
-            this.tbRWachtwoordHerhaal.TabIndex = 18;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(64, 310);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(209, 25);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Wachtwoord herhalen:";
-            // 
-            // tbREmail
-            // 
-            this.tbREmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbREmail.Location = new System.Drawing.Point(69, 195);
-            this.tbREmail.Name = "tbREmail";
-            this.tbREmail.Size = new System.Drawing.Size(245, 30);
-            this.tbREmail.TabIndex = 20;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(64, 167);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 25);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Email:";
             // 
             // InlogForm
             // 

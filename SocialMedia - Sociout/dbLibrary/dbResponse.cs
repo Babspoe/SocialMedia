@@ -38,7 +38,7 @@ namespace dbLibrary
 
         private void Initialize()
         {
-            string server = "localhost";
+            string server = "10.12.181.255";
             string database = "socialmedia";
             string uid = "root";
             string password = "";
@@ -97,7 +97,30 @@ namespace dbLibrary
             return list;
         }
 
-        public gebruiker SelectGebruiker()
+        public string[] SelectLogin(string naam, string wachtwoord)
+        {
+            string query = "SELECT EXISTS(SELECT * FROM gebruiker WHERE Gebruikersnaam = '"+naam+"' && Wachtwoord = '"+wachtwoord+"') AS login, id FROM gebruiker";
+
+            string[] ret = new string[2];
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                ret[0] = dataReader["login"] + "";
+                ret[1] = dataReader["id"] + "";
+                
+            }
+            dataReader.Close();
+
+            connection.Close();
+
+            return ret;
+        }
+
+        public gebruiker SelectGebruikerX()
         {
             string query = "SELECT * FROM `table` WHERE 1";
 
@@ -110,19 +133,13 @@ namespace dbLibrary
 
             while (dataReader.Read())
             {
-                dbResponse newdbResponse = new dbResponse()
-                {
-                    id = dataReader["id"] + "",
-                    naam = dataReader["naam"] + "",
-                    waarde = dataReader["waarde"] + "",
-                };
-                list.Add(newdbResponse);
+                
             }
             dataReader.Close();
 
             connection.Close();
 
-            return list;
+            return ret;
         }
 
         //Insert statement
