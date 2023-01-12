@@ -37,7 +37,6 @@
             this.tpVolgend = new System.Windows.Forms.TabPage();
             this.tpLiked = new System.Windows.Forms.TabPage();
             this.flpHomePage = new System.Windows.Forms.FlowLayoutPanel();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfiel)).BeginInit();
             this.tcPaginas.SuspendLayout();
@@ -84,7 +83,7 @@
             this.tcPaginas.Controls.Add(this.tpPersoonlijk);
             this.tcPaginas.Controls.Add(this.tpVolgend);
             this.tcPaginas.Controls.Add(this.tpLiked);
-            this.tcPaginas.Controls.Add(this.tabPage1);
+            this.tcPaginas.Controls.Add(this.tabPage1); 
             this.tcPaginas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcPaginas.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tcPaginas.ItemSize = new System.Drawing.Size(30, 120);
