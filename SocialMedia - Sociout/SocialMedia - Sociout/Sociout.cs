@@ -14,9 +14,11 @@ namespace SocialMedia___Sociout
 {
     public partial class Sociout : Form
     {
-        public Sociout()
+        int gebruikersId;
+        public Sociout(int GebruikersId)
         {
             InitializeComponent();
+            gebruikersId = GebruikersId;
         }
 
         dbFunctions db = new dbFunctions();
