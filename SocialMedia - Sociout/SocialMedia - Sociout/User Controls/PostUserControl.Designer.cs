@@ -32,6 +32,7 @@
             this.lblGebruikersnaam = new System.Windows.Forms.Label();
             this.pnlUser = new System.Windows.Forms.Panel();
             this.pnlFloor = new System.Windows.Forms.Panel();
+            this.lblLikes = new System.Windows.Forms.Label();
             this.btnLike = new System.Windows.Forms.Button();
             this.btnReactions = new System.Windows.Forms.Button();
             this.scContent = new System.Windows.Forms.SplitContainer();
@@ -54,7 +55,7 @@
             this.pbProfielAfbeelding.Margin = new System.Windows.Forms.Padding(0);
             this.pbProfielAfbeelding.Name = "pbProfielAfbeelding";
             this.pbProfielAfbeelding.Size = new System.Drawing.Size(50, 50);
-            this.pbProfielAfbeelding.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbProfielAfbeelding.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbProfielAfbeelding.TabIndex = 0;
             this.pbProfielAfbeelding.TabStop = false;
             // 
@@ -83,6 +84,7 @@
             // 
             // pnlFloor
             // 
+            this.pnlFloor.Controls.Add(this.lblLikes);
             this.pnlFloor.Controls.Add(this.btnLike);
             this.pnlFloor.Controls.Add(this.btnReactions);
             this.pnlFloor.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -92,9 +94,20 @@
             this.pnlFloor.Size = new System.Drawing.Size(548, 25);
             this.pnlFloor.TabIndex = 3;
             // 
+            // lblLikes
+            // 
+            this.lblLikes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblLikes.AutoSize = true;
+            this.lblLikes.Location = new System.Drawing.Point(425, 7);
+            this.lblLikes.Name = "lblLikes";
+            this.lblLikes.Size = new System.Drawing.Size(13, 13);
+            this.lblLikes.TabIndex = 2;
+            this.lblLikes.Text = "0";
+            // 
             // btnLike
             // 
-            this.btnLike.Location = new System.Drawing.Point(392, 2);
+            this.btnLike.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLike.Location = new System.Drawing.Point(344, 2);
             this.btnLike.Name = "btnLike";
             this.btnLike.Size = new System.Drawing.Size(75, 23);
             this.btnLike.TabIndex = 1;
@@ -103,6 +116,7 @@
             // 
             // btnReactions
             // 
+            this.btnReactions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReactions.Location = new System.Drawing.Point(473, 2);
             this.btnReactions.Name = "btnReactions";
             this.btnReactions.Size = new System.Drawing.Size(75, 23);
@@ -136,7 +150,7 @@
             this.pbAfbeelding.Location = new System.Drawing.Point(0, 0);
             this.pbAfbeelding.Name = "pbAfbeelding";
             this.pbAfbeelding.Size = new System.Drawing.Size(548, 150);
-            this.pbAfbeelding.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbAfbeelding.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAfbeelding.TabIndex = 0;
             this.pbAfbeelding.TabStop = false;
             // 
@@ -164,8 +178,8 @@
             this.Load += new System.EventHandler(this.PostUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbProfielAfbeelding)).EndInit();
             this.pnlUser.ResumeLayout(false);
-            this.pnlUser.PerformLayout();
             this.pnlFloor.ResumeLayout(false);
+            this.pnlFloor.PerformLayout();
             this.scContent.Panel1.ResumeLayout(false);
             this.scContent.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scContent)).EndInit();
@@ -186,5 +200,6 @@
         private System.Windows.Forms.SplitContainer scContent;
         private System.Windows.Forms.PictureBox pbAfbeelding;
         private System.Windows.Forms.RichTextBox rtxtTekst;
+        private System.Windows.Forms.Label lblLikes;
     }
 }

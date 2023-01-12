@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dbLibrary;
+using SocialMedia___Sociout.User_Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +18,8 @@ namespace SocialMedia___Sociout
         {
             InitializeComponent();
         }
+
+        dbFunctions db = new dbFunctions();
 
         //Voor de tabpages de tekst horizontaal zettens
         private void tcPaginas_DrawItem(object sender, DrawItemEventArgs e)
@@ -38,5 +42,26 @@ namespace SocialMedia___Sociout
                 MessageBox.Show("Je klikte op Enter", "Zoeken");
             }
         }
+
+        private void Sociout_Load(object sender, EventArgs e)
+        {
+            Homepage_Load();
+        }
+
+        private void Homepage_Load()
+        {
+            foreach(var post in db.SelectBericht())
+            {
+                var control = new PostUserControl(post);
+                control.OpenReacties += new EventHandler(OpenReactions);
+                flpHomePage.Controls.Add(control);
+            }
+        }
+
+        private void OpenReactions(object sender, EventArgs e)
+        {
+            MessageBox.Show("DIT IS EEN REACTIE!");
+        }
+
     }
 }

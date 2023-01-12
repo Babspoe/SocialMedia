@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.pbProfiel = new System.Windows.Forms.PictureBox();
             this.tcPaginas = new System.Windows.Forms.TabControl();
             this.tpHome = new System.Windows.Forms.TabPage();
             this.tpPersoonlijk = new System.Windows.Forms.TabPage();
             this.tpVolgend = new System.Windows.Forms.TabPage();
             this.tpLiked = new System.Windows.Forms.TabPage();
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.flpHomePage = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfiel)).BeginInit();
             this.tcPaginas.SuspendLayout();
+            this.tpHome.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -51,6 +53,17 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(859, 65);
             this.pnlHeader.TabIndex = 0;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.txtSearch.Location = new System.Drawing.Point(648, 22);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(130, 23);
+            this.txtSearch.TabIndex = 1;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // pbProfiel
             // 
@@ -84,9 +97,10 @@
             // 
             // tpHome
             // 
+            this.tpHome.Controls.Add(this.flpHomePage);
             this.tpHome.Location = new System.Drawing.Point(124, 4);
+            this.tpHome.Margin = new System.Windows.Forms.Padding(0);
             this.tpHome.Name = "tpHome";
-            this.tpHome.Padding = new System.Windows.Forms.Padding(3);
             this.tpHome.Size = new System.Drawing.Size(731, 454);
             this.tpHome.TabIndex = 0;
             this.tpHome.Text = "Home";
@@ -95,8 +109,8 @@
             // tpPersoonlijk
             // 
             this.tpPersoonlijk.Location = new System.Drawing.Point(124, 4);
+            this.tpPersoonlijk.Margin = new System.Windows.Forms.Padding(0);
             this.tpPersoonlijk.Name = "tpPersoonlijk";
-            this.tpPersoonlijk.Padding = new System.Windows.Forms.Padding(3);
             this.tpPersoonlijk.Size = new System.Drawing.Size(731, 454);
             this.tpPersoonlijk.TabIndex = 1;
             this.tpPersoonlijk.Text = "Mijn Pagina";
@@ -105,8 +119,8 @@
             // tpVolgend
             // 
             this.tpVolgend.Location = new System.Drawing.Point(124, 4);
+            this.tpVolgend.Margin = new System.Windows.Forms.Padding(0);
             this.tpVolgend.Name = "tpVolgend";
-            this.tpVolgend.Padding = new System.Windows.Forms.Padding(3);
             this.tpVolgend.Size = new System.Drawing.Size(731, 454);
             this.tpVolgend.TabIndex = 2;
             this.tpVolgend.Text = "Volgend";
@@ -115,23 +129,21 @@
             // tpLiked
             // 
             this.tpLiked.Location = new System.Drawing.Point(124, 4);
+            this.tpLiked.Margin = new System.Windows.Forms.Padding(0);
             this.tpLiked.Name = "tpLiked";
-            this.tpLiked.Padding = new System.Windows.Forms.Padding(3);
             this.tpLiked.Size = new System.Drawing.Size(731, 454);
             this.tpLiked.TabIndex = 3;
             this.tpLiked.Text = "Liked";
             this.tpLiked.UseVisualStyleBackColor = true;
             // 
-            // txtSearch
+            // flpHomePage
             // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.txtSearch.Location = new System.Drawing.Point(648, 22);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(130, 23);
-            this.txtSearch.TabIndex = 1;
-            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
+            this.flpHomePage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpHomePage.Location = new System.Drawing.Point(0, 0);
+            this.flpHomePage.Margin = new System.Windows.Forms.Padding(0);
+            this.flpHomePage.Name = "flpHomePage";
+            this.flpHomePage.Size = new System.Drawing.Size(731, 454);
+            this.flpHomePage.TabIndex = 0;
             // 
             // Sociout
             // 
@@ -140,13 +152,15 @@
             this.ClientSize = new System.Drawing.Size(859, 527);
             this.Controls.Add(this.tcPaginas);
             this.Controls.Add(this.pnlHeader);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Sociout";
             this.Text = "Sociout";
+            this.Load += new System.EventHandler(this.Sociout_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfiel)).EndInit();
             this.tcPaginas.ResumeLayout(false);
+            this.tpHome.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -161,5 +175,6 @@
         private System.Windows.Forms.TabPage tpVolgend;
         private System.Windows.Forms.TabPage tpLiked;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.FlowLayoutPanel flpHomePage;
     }
 }
