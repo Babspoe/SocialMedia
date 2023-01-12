@@ -28,3 +28,33 @@ C:\Users\HP850G5\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\obj\De
 C:\Users\HP850G5\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\obj\Debug\dbLibrary.csproj.CopyComplete
 C:\Users\HP850G5\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\obj\Debug\dbLibrary.dll
 C:\Users\HP850G5\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\obj\Debug\dbLibrary.pdb
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\obj\Debug\dbLibrary.csproj.AssemblyReference.cache
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\obj\Debug\dbLibrary.csproj.CoreCompileInputs.cache
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\obj\Debug\dbLibrary.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\obj\Debug\dbLibrary.pdb
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\dbLibrary.dll.config
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\dbLibrary.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\dbLibrary.pdb
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\Google.Protobuf.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\MySql.Data.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\System.Buffers.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\System.Memory.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\ZstdNet.dll
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\Google.Protobuf.pdb
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\Google.Protobuf.xml
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\MySql.Data.xml
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\System.Buffers.xml
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\System.Memory.xml
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\dbLibrary\obj\Debug\dbLibrary.csproj.CopyComplete
