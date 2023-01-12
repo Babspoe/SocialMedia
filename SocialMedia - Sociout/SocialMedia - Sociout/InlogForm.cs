@@ -45,22 +45,29 @@ namespace SocialMedia___Sociout
         {
             if (tbRWachtwoord.Text == tbRWachtwoordHerhaal.Text)
             {
-                gebruiker newgebruiker = new gebruiker
+                if (IsValidEmail(tbREmail.Text))
                 {
-                    Gebruikersnaam = tbRNaam.Text,
-                    Email = tbREmail.Text,
-                    Wachtwoord = Encrypt(tbRWachtwoord.Text),
-                };
-                db.InsertGebruiker(newgebruiker);
+                    gebruiker newgebruiker = new gebruiker
+                    {
+                        Gebruikersnaam = tbRNaam.Text,
+                        Email = tbREmail.Text,
+                        Wachtwoord = Encrypt(tbRWachtwoord.Text),
+                    };
+                    db.InsertGebruiker(newgebruiker);
 
-                splitContainer1.Panel2Collapsed = true;
+                    MessageBox.Show("Gebruiker opgeslagen");
+
+                    splitContainer1.Panel2Collapsed = true;
+                }
+                else
+                {
+                    MessageBox.Show("Geen geldige Email");
+                }
             }
             else
             {
                 MessageBox.Show("Wachtwoorden niet gelijk");
             }
-            
-            
         }
 
         public static string Encrypt(string clearText)
@@ -86,7 +93,37 @@ namespace SocialMedia___Sociout
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            string[] gebruiker = db.SelectLogin(tbNaam.Text, Encrypt(tbWachtwoord.Text));
+            if (gebruiker[0] == "1")
+            {
+                Sociout m = new Sociout(Convert.ToInt16(gebruiker[1]));
+                m.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Gebruiker niet gevonden");
+                tbWachtwoord.Text = "";
+            }
+        }
 
+        bool IsValidEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false; // suggested by @TK-421
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

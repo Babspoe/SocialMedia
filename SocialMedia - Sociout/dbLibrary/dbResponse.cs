@@ -97,6 +97,29 @@ namespace dbLibrary
             return list;
         }
 
+        public string[] SelectLogin(string naam, string wachtwoord)
+        {
+            string query = "SELECT EXISTS(SELECT * FROM gebruiker WHERE Gebruikersnaam = '"+naam+"' && Wachtwoord = '"+wachtwoord+"') AS login, id FROM gebruiker";
+
+            string[] ret = new string[2];
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                ret[0] = dataReader["login"] + "";
+                ret[1] = dataReader["id"] + "";
+                
+            }
+            dataReader.Close();
+
+            connection.Close();
+
+            return ret;
+        }
+
         public gebruiker SelectGebruiker()
         {
             string query = "SELECT * FROM `table` WHERE 1";
