@@ -16,7 +16,7 @@ namespace SocialMedia___Sociout
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Sociout());
+            Application.Run(new InlogForm());
         }
     }
 }

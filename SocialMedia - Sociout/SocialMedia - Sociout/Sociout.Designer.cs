@@ -33,14 +33,17 @@
             this.pbProfiel = new System.Windows.Forms.PictureBox();
             this.tcPaginas = new System.Windows.Forms.TabControl();
             this.tpHome = new System.Windows.Forms.TabPage();
+            this.flpHomePage = new System.Windows.Forms.FlowLayoutPanel();
             this.tpPersoonlijk = new System.Windows.Forms.TabPage();
             this.tpVolgend = new System.Windows.Forms.TabPage();
             this.tpLiked = new System.Windows.Forms.TabPage();
-            this.flpHomePage = new System.Windows.Forms.FlowLayoutPanel();
+            this.tpZoeken = new System.Windows.Forms.TabPage();
+            this.flpGebruikersZoeken = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfiel)).BeginInit();
             this.tcPaginas.SuspendLayout();
             this.tpHome.SuspendLayout();
+            this.tpZoeken.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -61,7 +64,7 @@
             this.txtSearch.Location = new System.Drawing.Point(648, 22);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(0);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(130, 23);
+            this.txtSearch.Size = new System.Drawing.Size(130, 26);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
@@ -83,12 +86,12 @@
             this.tcPaginas.Controls.Add(this.tpPersoonlijk);
             this.tcPaginas.Controls.Add(this.tpVolgend);
             this.tcPaginas.Controls.Add(this.tpLiked);
-            this.tcPaginas.Controls.Add(this.tabPage1); 
+            this.tcPaginas.Controls.Add(this.tpZoeken);
             this.tcPaginas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcPaginas.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tcPaginas.ItemSize = new System.Drawing.Size(30, 120);
             this.tcPaginas.Location = new System.Drawing.Point(0, 80);
-            this.tcPaginas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tcPaginas.Margin = new System.Windows.Forms.Padding(4);
             this.tcPaginas.Multiline = true;
             this.tcPaginas.Name = "tcPaginas";
             this.tcPaginas.SelectedIndex = 0;
@@ -96,6 +99,7 @@
             this.tcPaginas.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tcPaginas.TabIndex = 1;
             this.tcPaginas.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tcPaginas_DrawItem);
+            this.tcPaginas.SelectedIndexChanged += new System.EventHandler(this.tabopenen);
             // 
             // tpHome
             // 
@@ -104,17 +108,26 @@
             this.tpHome.Margin = new System.Windows.Forms.Padding(0);
             this.tpHome.Name = "tpHome";
             this.tpHome.Padding = new System.Windows.Forms.Padding(3);
-            this.tpHome.Size = new System.Drawing.Size(731, 454);
+            this.tpHome.Size = new System.Drawing.Size(1017, 561);
             this.tpHome.TabIndex = 0;
             this.tpHome.Text = "Home";
             this.tpHome.UseVisualStyleBackColor = true;
+            // 
+            // flpHomePage
+            // 
+            this.flpHomePage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpHomePage.Location = new System.Drawing.Point(3, 3);
+            this.flpHomePage.Margin = new System.Windows.Forms.Padding(0);
+            this.flpHomePage.Name = "flpHomePage";
+            this.flpHomePage.Size = new System.Drawing.Size(1011, 555);
+            this.flpHomePage.TabIndex = 0;
             // 
             // tpPersoonlijk
             // 
             this.tpPersoonlijk.Location = new System.Drawing.Point(124, 4);
             this.tpPersoonlijk.Margin = new System.Windows.Forms.Padding(0);
             this.tpPersoonlijk.Name = "tpPersoonlijk";
-            this.tpPersoonlijk.Size = new System.Drawing.Size(731, 454);
+            this.tpPersoonlijk.Size = new System.Drawing.Size(1017, 561);
             this.tpPersoonlijk.TabIndex = 1;
             this.tpPersoonlijk.Text = "Mijn Pagina";
             this.tpPersoonlijk.UseVisualStyleBackColor = true;
@@ -124,7 +137,7 @@
             this.tpVolgend.Location = new System.Drawing.Point(124, 4);
             this.tpVolgend.Margin = new System.Windows.Forms.Padding(0);
             this.tpVolgend.Name = "tpVolgend";
-            this.tpVolgend.Size = new System.Drawing.Size(731, 454);
+            this.tpVolgend.Size = new System.Drawing.Size(1017, 561);
             this.tpVolgend.TabIndex = 2;
             this.tpVolgend.Text = "Volgend";
             this.tpVolgend.UseVisualStyleBackColor = true;
@@ -134,19 +147,28 @@
             this.tpLiked.Location = new System.Drawing.Point(124, 4);
             this.tpLiked.Margin = new System.Windows.Forms.Padding(0);
             this.tpLiked.Name = "tpLiked";
-            this.tpLiked.Size = new System.Drawing.Size(731, 454);
+            this.tpLiked.Size = new System.Drawing.Size(1017, 561);
             this.tpLiked.TabIndex = 3;
             this.tpLiked.Text = "Liked";
             this.tpLiked.UseVisualStyleBackColor = true;
             // 
-            // flpHomePage
+            // tpZoeken
             // 
-            this.flpHomePage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpHomePage.Location = new System.Drawing.Point(0, 0);
-            this.flpHomePage.Margin = new System.Windows.Forms.Padding(0);
-            this.flpHomePage.Name = "flpHomePage";
-            this.flpHomePage.Size = new System.Drawing.Size(731, 454);
-            this.flpHomePage.TabIndex = 0;
+            this.tpZoeken.Controls.Add(this.flpGebruikersZoeken);
+            this.tpZoeken.Location = new System.Drawing.Point(124, 4);
+            this.tpZoeken.Name = "tpZoeken";
+            this.tpZoeken.Size = new System.Drawing.Size(1017, 561);
+            this.tpZoeken.TabIndex = 4;
+            this.tpZoeken.Text = "Zoeken";
+            this.tpZoeken.UseVisualStyleBackColor = true;
+            // 
+            // flpGebruikersZoeken
+            // 
+            this.flpGebruikersZoeken.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpGebruikersZoeken.Location = new System.Drawing.Point(0, 0);
+            this.flpGebruikersZoeken.Name = "flpGebruikersZoeken";
+            this.flpGebruikersZoeken.Size = new System.Drawing.Size(1017, 561);
+            this.flpGebruikersZoeken.TabIndex = 0;
             // 
             // Sociout
             // 
@@ -164,6 +186,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbProfiel)).EndInit();
             this.tcPaginas.ResumeLayout(false);
             this.tpHome.ResumeLayout(false);
+            this.tpZoeken.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -179,5 +202,7 @@
         private System.Windows.Forms.TabPage tpLiked;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.FlowLayoutPanel flpHomePage;
+        private System.Windows.Forms.TabPage tpZoeken;
+        private System.Windows.Forms.FlowLayoutPanel flpGebruikersZoeken;
     }
 }

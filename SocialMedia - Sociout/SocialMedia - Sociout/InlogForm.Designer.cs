@@ -65,6 +65,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.tbNaam);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1Collapsed = true;
             // 
             // splitContainer1.Panel2
             // 
@@ -78,7 +79,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.tbRNaam);
             this.splitContainer1.Panel2.Controls.Add(this.label4);
-            this.splitContainer1.Panel2Collapsed = true;
             this.splitContainer1.Size = new System.Drawing.Size(378, 450);
             this.splitContainer1.SplitterDistance = 126;
             this.splitContainer1.TabIndex = 6;
@@ -147,7 +147,7 @@
             this.tbREmail.Location = new System.Drawing.Point(69, 195);
             this.tbREmail.Name = "tbREmail";
             this.tbREmail.Size = new System.Drawing.Size(245, 30);
-            this.tbREmail.TabIndex = 20;
+            this.tbREmail.TabIndex = 14;
             // 
             // label6
             // 
@@ -164,8 +164,9 @@
             this.tbRWachtwoordHerhaal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbRWachtwoordHerhaal.Location = new System.Drawing.Point(69, 338);
             this.tbRWachtwoordHerhaal.Name = "tbRWachtwoordHerhaal";
+            this.tbRWachtwoordHerhaal.PasswordChar = '*';
             this.tbRWachtwoordHerhaal.Size = new System.Drawing.Size(245, 30);
-            this.tbRWachtwoordHerhaal.TabIndex = 18;
+            this.tbRWachtwoordHerhaal.TabIndex = 20;
             // 
             // label5
             // 
@@ -183,7 +184,7 @@
             this.btnTerug.Location = new System.Drawing.Point(3, 3);
             this.btnTerug.Name = "btnTerug";
             this.btnTerug.Size = new System.Drawing.Size(157, 41);
-            this.btnTerug.TabIndex = 16;
+            this.btnTerug.TabIndex = 22;
             this.btnTerug.Text = "Terug";
             this.btnTerug.UseVisualStyleBackColor = true;
             this.btnTerug.Click += new System.EventHandler(this.btnTerug_Click);
@@ -194,7 +195,7 @@
             this.btnRRegistreren.Location = new System.Drawing.Point(115, 397);
             this.btnRRegistreren.Name = "btnRRegistreren";
             this.btnRRegistreren.Size = new System.Drawing.Size(157, 41);
-            this.btnRRegistreren.TabIndex = 15;
+            this.btnRRegistreren.TabIndex = 21;
             this.btnRRegistreren.Text = "Registreren";
             this.btnRRegistreren.UseVisualStyleBackColor = true;
             this.btnRRegistreren.Click += new System.EventHandler(this.btnRRegistreren_Click);
@@ -204,8 +205,9 @@
             this.tbRWachtwoord.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbRWachtwoord.Location = new System.Drawing.Point(69, 265);
             this.tbRWachtwoord.Name = "tbRWachtwoord";
+            this.tbRWachtwoord.PasswordChar = '*';
             this.tbRWachtwoord.Size = new System.Drawing.Size(245, 30);
-            this.tbRWachtwoord.TabIndex = 14;
+            this.tbRWachtwoord.TabIndex = 18;
             // 
             // label3
             // 

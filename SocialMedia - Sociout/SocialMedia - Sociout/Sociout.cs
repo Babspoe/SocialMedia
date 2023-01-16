@@ -45,13 +45,29 @@ namespace SocialMedia___Sociout
             if (e.KeyCode == Keys.Enter)
             {
                 //Laat de zoekresultatenpage zien
-                MessageBox.Show("Je klikte op Enter", "Zoeken");
+                //MessageBox.Show("Je klikte op Enter", "Zoeken");
+                tpZoeken.Parent = tcPaginas;
+                tcPaginas.SelectedTab = tpZoeken;
+
+                List<gebruikerZoek> geb = db.SelectGebruikerZoek(txtSearch.Text);
+                for (int i = 0; i < geb.Count; i++)
+                {
+                    GebruikerZoekUC newUC = new GebruikerZoekUC(geb[i].id, geb[i].naam, geb[i].volgers, gebruikersId.ToString());
+                    flpGebruikersZoeken.Controls.Add(newUC);
+                }
             }
         }
 
         private void Sociout_Load(object sender, EventArgs e)
         {
-            Homepage_Load();
+            tpZoeken.Parent = null;
+            //Homepage_Load();
+            //Zoekpage_Load();
+        }
+
+        private void Zoekpage_Load()
+        {
+            
         }
 
         private void Homepage_Load()
@@ -76,5 +92,15 @@ namespace SocialMedia___Sociout
             //Functie om profiel te openen van persoon
         }
 
+        private void tabopenen(object sender, EventArgs e)
+        {
+            TabControl tc = (TabControl)sender;
+            //MessageBox.Show(tc.SelectedIndex.ToString());
+            if (tc.SelectedIndex != 4)
+            {
+                tpZoeken.Parent = null;
+            }
+            
+        }
     }
 }

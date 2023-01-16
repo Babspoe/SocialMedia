@@ -34,6 +34,22 @@ namespace dbLibrary
         public int Likes { get; set; }
         public gebruiker gebruiker { get; set; }
     }
+
+    public class volger
+    {
+        public string Volgend { get; set; }
+        public string Volger { get; set; }
+        public DateTime Datum { get; set; }
+    }
+
+    public class gebruikerZoek
+    {
+        public int id { get; set; }
+        public string naam { get; set; }
+        public string volgers { get; set; }
+    }
+
+
     public class dbFunctions
     {
         private MySqlConnection connection;
@@ -47,7 +63,7 @@ namespace dbLibrary
 
         private void Initialize()
         {
-            string server = "10.12.181.255";
+            string server = "10.12.182.18";
             string database = "socialmedia";
             string uid = "root";
             string password = "";
@@ -121,6 +137,33 @@ namespace dbLibrary
                 ret[0] = dataReader["login"] + "";
                 ret[1] = dataReader["id"] + "";
                 
+            }
+            dataReader.Close();
+
+            connection.Close();
+
+            return ret;
+        }
+
+        public List<gebruikerZoek> SelectGebruikerZoek(string naam)
+        {
+            string query = "SELECT Id,`Gebruikersnaam`,COUNT(Volger) AS Volgers FROM `gebruiker` LEFT JOIN volger ON gebruiker.Id = volger.Volgend WHERE `Gebruikersnaam` LIKE '%"+naam+"%' GROUP BY Gebruikersnaam;";
+
+            List<gebruikerZoek> ret = new List<gebruikerZoek>();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                gebruikerZoek newGebruikerZoek = new gebruikerZoek()
+                {
+                    id = Convert.ToInt32(dataReader["Id"]),
+                    naam = dataReader["Gebruikersnaam"] + "",
+                    volgers = dataReader["Volgers"] + "",
+                };
+                ret.Add(newGebruikerZoek);
             }
             dataReader.Close();
 
@@ -213,6 +256,20 @@ WHERE b.Bericht_Id = 0";
         public void InsertGebruiker(gebruiker insert)//, byte[] img
         {
             string query = "INSERT INTO `gebruiker`(`Gebruikersnaam`, `Email`, `Wachtwoord`) VALUES ('"+insert.Gebruikersnaam+ "','"+insert.Email+ "','"+insert.Wachtwoord+"')";
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
+
+            //image
+            //UpdateProductImg(img, insert[0]);
+
+            connection.Close();
+        }
+
+        public void InsertVolger(volger insert)
+        {
+            string query = "INSERT INTO `volger`(`Volgend`, `Volger`, `Datum`) VALUES ('"+insert.Volgend+ "','"+insert.Volger+"','"+insert.Datum+"')";
             connection.Open();
 
             MySqlCommand cmd = new MySqlCommand(query, connection);
