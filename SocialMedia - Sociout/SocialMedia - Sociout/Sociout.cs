@@ -20,6 +20,10 @@ namespace SocialMedia___Sociout
             InitializeComponent();
             gebruikersId = GebruikersId;
         }
+        public Sociout()
+        {
+            InitializeComponent();
+        }
 
         dbFunctions db = new dbFunctions();
 
@@ -63,6 +67,13 @@ namespace SocialMedia___Sociout
         private void OpenReactions(object sender, EventArgs e)
         {
             MessageBox.Show("DIT IS EEN REACTIE!");
+            //Naar Reacties van bericht
+        }
+
+        private void OpenProfile(object sender, EventArgs e)
+        {
+            MessageBox.Show("DIT IS EEN PROFIEL OPENER");
+            //Functie om profiel te openen van persoon
         }
 
     }
