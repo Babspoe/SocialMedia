@@ -43,6 +43,22 @@ namespace dbLibrary
         Gebruiker
     }
 
+
+    public class volger
+    {
+        public string Volgend { get; set; }
+        public string Volger { get; set; }
+        public DateTime Datum { get; set; }
+    }
+
+    public class gebruikerZoek
+    {
+        public int id { get; set; }
+        public string naam { get; set; }
+        public string volgers { get; set; }
+    }
+
+
     public class dbFunctions
     {
         private MySqlConnection connection;
@@ -56,7 +72,7 @@ namespace dbLibrary
 
         private void Initialize()
         {
-            string server = "localhost";
+            string server = "10.12.182.18";
             string database = "socialmedia";
             string uid = "root";
             string password = "";
@@ -117,7 +133,7 @@ namespace dbLibrary
 
         public string[] SelectLogin(string naam, string wachtwoord)
         {
-            string query = "SELECT EXISTS(SELECT * FROM gebruiker WHERE Gebruikersnaam = '"+naam+"' && Wachtwoord = '"+wachtwoord+"') AS login, id FROM gebruiker";
+            string query = "SELECT EXISTS(SELECT * FROM gebruiker WHERE Gebruikersnaam = '"+naam+"' && Wachtwoord = '"+wachtwoord+ "') AS login, id FROM gebruiker WHERE Gebruikersnaam = '"+naam+"'";
 
             string[] ret = new string[2];
             connection.Open();
@@ -130,6 +146,55 @@ namespace dbLibrary
                 ret[0] = dataReader["login"] + "";
                 ret[1] = dataReader["id"] + "";
                 
+            }
+            dataReader.Close();
+
+            connection.Close();
+
+            return ret;
+        }
+
+        public string SelectCheckLogin(string naam)
+        {
+            string query = "SELECT EXISTS(SELECT * FROM gebruiker WHERE Gebruikersnaam = '"+naam+"') AS login, Id FROM gebruiker WHERE Gebruikersnaam = '"+naam+"';";
+
+            string ret = "";
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                ret = dataReader["login"] + "";
+
+            }
+            dataReader.Close();
+
+            connection.Close();
+
+            return ret;
+        }
+
+        public List<gebruikerZoek> SelectGebruikerZoek(string naam)
+        {
+            string query = "SELECT Id,`Gebruikersnaam`,COUNT(Volgend) AS Volgers FROM `gebruiker` LEFT JOIN volger ON gebruiker.Id = volger.Volger WHERE `Gebruikersnaam` LIKE '%"+naam+"%' GROUP BY Gebruikersnaam";
+
+            List<gebruikerZoek> ret = new List<gebruikerZoek>();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                gebruikerZoek newGebruikerZoek = new gebruikerZoek()
+                {
+                    id = Convert.ToInt32(dataReader["Id"]),
+                    naam = dataReader["Gebruikersnaam"] + "",
+                    volgers = dataReader["Volgers"] + "",
+                };
+                ret.Add(newGebruikerZoek);
             }
             dataReader.Close();
 
@@ -257,6 +322,29 @@ GROUP BY b.Id";
 
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.ExecuteNonQuery();
+
+            //image
+            //UpdateProductImg(img, insert[0]);
+
+            connection.Close();
+        }
+
+        public void InsertVolger(volger insert)
+        {
+            string query = "INSERT INTO `volger`(`Volgend`, `Volger`, `Datum`) VALUES ('"+insert.Volgend+ "','"+insert.Volger+"','"+insert.Datum+"')";
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+                
+            }
+            
 
             //image
             //UpdateProductImg(img, insert[0]);
