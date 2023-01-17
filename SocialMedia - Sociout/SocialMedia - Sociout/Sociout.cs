@@ -71,8 +71,9 @@ namespace SocialMedia___Sociout
         private void Sociout_Load(object sender, EventArgs e)
         {
             tpZoeken.Parent = null;
-            //Homepage_Load();
-            //Zoekpage_Load();
+            Homepage_Load();
+            Persoonlijk_Load();
+            Zoekpage_Load();
         }
 
         private void Zoekpage_Load()
@@ -134,7 +135,7 @@ namespace SocialMedia___Sociout
                 tp.Controls.Add(new ProfielUserControl(gebruiker, this) { Name = gebruiker.id });
                 tcPaginas.SelectTab(tp);
             }
-
+        }
         private void tabopenen(object sender, EventArgs e)
         {
             TabControl tc = (TabControl)sender;
@@ -145,9 +146,7 @@ namespace SocialMedia___Sociout
             }
             
         }
-    }
 
-        }
         #endregion
         #region Persoonlijk
         private void Persoonlijk_Load()
