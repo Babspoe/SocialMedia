@@ -34,6 +34,15 @@ namespace dbLibrary
         public int Likes { get; set; }
         public gebruiker gebruiker { get; set; }
     }
+
+    public enum BerichtenOpvraag
+    {
+        Alles,
+        Geliked,
+        Volgt,
+        Gebruiker
+    }
+
     public class dbFunctions
     {
         private MySqlConnection connection;
@@ -129,12 +138,44 @@ namespace dbLibrary
             return ret;
         }
 
-        public List<bericht> SelectBericht()
+        public List<bericht> SelectBericht(BerichtenOpvraag bo, int gebruikerId = 0)
         {
-            string query = 
-@"SELECT b.id,COUNT(*) Likes, b.Afbeelding ,Tekst, g.Afbeelding pfp, g.Gebruikersnaam, b.Gebruiker_Id FROM bericht b
-INNER JOIN (`like` l, gebruiker g) ON (b.id = l.Bericht_Id AND b.Gebruiker_Id = g.Id )
-WHERE b.Bericht_Id = 0";
+            string query = "";
+            switch (bo)
+            {
+                case BerichtenOpvraag.Alles:
+                    query =
+@"SELECT b.id,COUNT(l.Gebruiker_Id) Likes, b.Afbeelding ,Tekst, g.Afbeelding pfp, g.Gebruikersnaam, b.Gebruiker_Id FROM bericht b
+LEFT JOIN `like` l ON b.Id = l.Bericht_Id
+INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
+WHERE b.Bericht_Id = 0
+GROUP BY b.Id";
+                    break;
+                case BerichtenOpvraag.Volgt:
+                    query =
+$@"SELECT b.id,COUNT(l.Gebruiker_Id) Likes, b.Afbeelding ,Tekst, g.Afbeelding pfp, g.Gebruikersnaam, b.Gebruiker_Id FROM bericht b
+LEFT JOIN `like` l ON b.Id = l.Bericht_Id
+INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
+WHERE b.Bericht_Id = 0 AND b.Gebruiker_Id IN (SELECT Volgend FROM volger WHERE volger = {gebruikerId})
+GROUP BY b.Id";
+                    break;
+                case BerichtenOpvraag.Geliked:
+                    query =
+$@"SELECT b.id,COUNT(l.Gebruiker_Id) Likes, b.Afbeelding ,Tekst, g.Afbeelding pfp, g.Gebruikersnaam, b.Gebruiker_Id FROM bericht b
+LEFT JOIN `like` l ON b.Id = l.Bericht_Id
+INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
+WHERE b.Bericht_Id = 0 AND l.Gebruiker_Id = {gebruikerId}
+GROUP BY b.Id";
+                    break;
+                case BerichtenOpvraag.Gebruiker:
+                    query =
+$@"SELECT b.Id,COUNT(l.Gebruiker_Id) Likes, b.Afbeelding ,Tekst, g.Afbeelding pfp, g.Gebruikersnaam, b.Gebruiker_Id FROM bericht b
+LEFT JOIN `like` l ON b.Id = l.Bericht_Id
+INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
+WHERE b.Bericht_Id = 0 AND b.Gebruiker_Id = {gebruikerId}
+GROUP BY b.Id";
+                    break;
+            }
 
             List<bericht> list = new List<bericht>();
             //gebruiker ret = new gebruiker();
@@ -167,12 +208,12 @@ WHERE b.Bericht_Id = 0";
             return list;
         }
 
-        public gebruiker SelectGebruiker()
+        public gebruiker SelectGebruiker(int id = 1)
         {
-            string query = "SELECT * FROM `table` WHERE 1";
+            string query = $"SELECT Gebruikersnaam,Afbeelding FROM `gebruiker` WHERE Id = {id}";
 
             //List<dbResponse> list = new List<dbResponse>();
-            gebruiker ret = new gebruiker();
+            var ret = new gebruiker();
             connection.Open();
 
             MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -180,19 +221,18 @@ WHERE b.Bericht_Id = 0";
 
             while (dataReader.Read())
             {
-                dbResponse newdbResponse = new dbResponse()
+                ret = new gebruiker()
                 {
-                    id = dataReader["id"] + "",
-                    naam = dataReader["naam"] + "",
-                    waarde = dataReader["waarde"] + "",
+                    id = id.ToString(),
+                    Gebruikersnaam = (string)dataReader["Gebruikersnaam"],
+                    Afbeelding = dataReader["Afbeelding"] == DBNull.Value ? null : (byte[])dataReader["Afbeelding"]
                 };
-                //list.Add(newdbResponse);
             }
             dataReader.Close();
 
             connection.Close();
 
-            return new gebruiker();
+            return ret;
         }
 
         //Insert statement

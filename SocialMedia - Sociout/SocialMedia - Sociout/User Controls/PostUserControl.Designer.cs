@@ -150,7 +150,7 @@
             this.pbAfbeelding.Location = new System.Drawing.Point(0, 0);
             this.pbAfbeelding.Name = "pbAfbeelding";
             this.pbAfbeelding.Size = new System.Drawing.Size(548, 150);
-            this.pbAfbeelding.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAfbeelding.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbAfbeelding.TabIndex = 0;
             this.pbAfbeelding.TabStop = false;
             // 

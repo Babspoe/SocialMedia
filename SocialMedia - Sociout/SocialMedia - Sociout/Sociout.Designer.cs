@@ -33,10 +33,10 @@
             this.pbProfiel = new System.Windows.Forms.PictureBox();
             this.tcPaginas = new System.Windows.Forms.TabControl();
             this.tpHome = new System.Windows.Forms.TabPage();
+            this.flpHomePage = new System.Windows.Forms.FlowLayoutPanel();
             this.tpPersoonlijk = new System.Windows.Forms.TabPage();
             this.tpVolgend = new System.Windows.Forms.TabPage();
             this.tpLiked = new System.Windows.Forms.TabPage();
-            this.flpHomePage = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfiel)).BeginInit();
             this.tcPaginas.SuspendLayout();
@@ -106,6 +106,16 @@
             this.tpHome.Text = "Home";
             this.tpHome.UseVisualStyleBackColor = true;
             // 
+            // flpHomePage
+            // 
+            this.flpHomePage.AutoScroll = true;
+            this.flpHomePage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpHomePage.Location = new System.Drawing.Point(0, 0);
+            this.flpHomePage.Margin = new System.Windows.Forms.Padding(0);
+            this.flpHomePage.Name = "flpHomePage";
+            this.flpHomePage.Size = new System.Drawing.Size(731, 454);
+            this.flpHomePage.TabIndex = 0;
+            // 
             // tpPersoonlijk
             // 
             this.tpPersoonlijk.Location = new System.Drawing.Point(124, 4);
@@ -135,15 +145,6 @@
             this.tpLiked.TabIndex = 3;
             this.tpLiked.Text = "Liked";
             this.tpLiked.UseVisualStyleBackColor = true;
-            // 
-            // flpHomePage
-            // 
-            this.flpHomePage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpHomePage.Location = new System.Drawing.Point(0, 0);
-            this.flpHomePage.Margin = new System.Windows.Forms.Padding(0);
-            this.flpHomePage.Name = "flpHomePage";
-            this.flpHomePage.Size = new System.Drawing.Size(731, 454);
-            this.flpHomePage.TabIndex = 0;
             // 
             // Sociout
             // 
