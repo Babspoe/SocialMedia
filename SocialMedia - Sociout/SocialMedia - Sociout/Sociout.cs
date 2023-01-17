@@ -110,5 +110,12 @@ namespace SocialMedia___Sociout
             }
             
         }
+
+        UserControl1.ButtonClick += new EventHandler(UserControl_ButtonClick);
+
+        protected void UserControl_ButtonClick(object sender, EventArgs e)
+        {
+            //handle the event 
+        }
     }
 }

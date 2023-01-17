@@ -63,7 +63,7 @@ namespace dbLibrary
 
         private void Initialize()
         {
-            string server = "10.12.182.18";
+            string server = "10.12.181.254";
             string database = "socialmedia";
             string uid = "root";
             string password = "";
