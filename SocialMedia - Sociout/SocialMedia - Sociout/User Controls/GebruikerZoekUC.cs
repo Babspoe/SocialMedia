@@ -15,6 +15,18 @@ namespace SocialMedia___Sociout.User_Controls
 {
     public partial class GebruikerZoekUC : UserControl
     {
+        public EventHandler ToProfiel
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                button2.Click += value;
+            }
+        }
+
         public GebruikerZoekUC(int idin, string name = "error", string volgers = "error", string gebruikerIn = "error")
         {
             InitializeComponent();
@@ -45,16 +57,10 @@ namespace SocialMedia___Sociout.User_Controls
             MessageBox.Show("Je volgt nu " + naamp);
         }
 
-        [Browsable(true)]
-        [Category("Action")]
-        [Description("Invoked when user clicks button")]
-        public event EventHandler ButtonClick;
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //bubble the event up to the parent
-            if (this.ButtonClick != null)
-                this.ButtonClick(this, e);
+
         }
     }
 }

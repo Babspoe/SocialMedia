@@ -59,6 +59,7 @@ namespace SocialMedia___Sociout
                     if (geb[i].id != gebruikersId)
                     {
                         GebruikerZoekUC newUC = new GebruikerZoekUC(geb[i].id, geb[i].naam, geb[i].volgers, gebruikersId.ToString());
+                        //Event ToProfiel nog zetten
                         flpGebruikersZoeken.Controls.Add(newUC);
                     }
                     
@@ -110,8 +111,6 @@ namespace SocialMedia___Sociout
             }
             
         }
-
-        UserControl1.ButtonClick += new EventHandler(UserControl_ButtonClick);
 
         protected void UserControl_ButtonClick(object sender, EventArgs e)
         {
