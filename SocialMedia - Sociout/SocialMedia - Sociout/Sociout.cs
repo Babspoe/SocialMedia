@@ -102,10 +102,9 @@ namespace SocialMedia___Sociout
         {
             var gebruiker = new gebruiker();
             var post = (Control)sender;
-            while(post as GebruikerZoekUC == null)
+            while (!(post is PostUserControl || post is GebruikerZoekUC))
             {
                 post = post.Parent;
-                var t = post.GetType();
             }
             if(post is PostUserControl)
             {
