@@ -15,6 +15,18 @@ namespace SocialMedia___Sociout.User_Controls
 {
     public partial class GebruikerZoekUC : UserControl
     {
+        public EventHandler ToProfiel
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                button2.Click+= value;
+            }
+        }
+
         public GebruikerZoekUC(int idin, string name = "error", string volgers = "error", string gebruikerIn = "error")
         {
             InitializeComponent();
@@ -24,7 +36,7 @@ namespace SocialMedia___Sociout.User_Controls
             id = idin;
             naamp = name;
         }
-        int id;
+        public int id;
         string gebruiker;
         string naamp;
         private void UserControl1_Load(object sender, EventArgs e)

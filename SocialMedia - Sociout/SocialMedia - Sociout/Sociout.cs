@@ -61,6 +61,7 @@ namespace SocialMedia___Sociout
                     if (geb[i].id != gebruikersId)
                     {
                         GebruikerZoekUC newUC = new GebruikerZoekUC(geb[i].id, geb[i].naam, geb[i].volgers, gebruikersId.ToString());
+                        newUC.ToProfiel = OpenProfile;
                         flpGebruikersZoeken.Controls.Add(newUC);
                     }
                     
@@ -101,9 +102,10 @@ namespace SocialMedia___Sociout
         {
             var gebruiker = new gebruiker();
             var post = (Control)sender;
-            while(post as PostUserControl == null)
+            while(post as GebruikerZoekUC == null)
             {
                 post = post.Parent;
+                var t = post.GetType();
             }
             if(post is PostUserControl)
             {
@@ -111,7 +113,7 @@ namespace SocialMedia___Sociout
             }
             else
             {
-                //gebruiker = ((uc)post).gebruiker;
+                gebruiker = db.SelectGebruiker(((GebruikerZoekUC)post).id);
             }
             if (tcPaginas.TabPages.ContainsKey("tpProfiel"))
             {
@@ -140,7 +142,7 @@ namespace SocialMedia___Sociout
         {
             TabControl tc = (TabControl)sender;
             //MessageBox.Show(tc.SelectedIndex.ToString());
-            if (tc.SelectedIndex != 4)
+            if (tc.SelectedTab != tpZoeken)
             {
                 tpZoeken.Parent = null;
             }
