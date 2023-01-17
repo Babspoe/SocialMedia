@@ -47,17 +47,25 @@ namespace SocialMedia___Sociout
             {
                 if (IsValidEmail(tbREmail.Text))
                 {
-                    gebruiker newgebruiker = new gebruiker
+                    MessageBox.Show(db.SelectCheckLogin(tbRNaam.Text));
+                    if (db.SelectCheckLogin(tbRNaam.Text) == "")
                     {
-                        Gebruikersnaam = tbRNaam.Text,
-                        Email = tbREmail.Text,
-                        Wachtwoord = Encrypt(tbRWachtwoord.Text),
-                    };
-                    db.InsertGebruiker(newgebruiker);
+                        gebruiker newgebruiker = new gebruiker
+                        {
+                            Gebruikersnaam = tbRNaam.Text,
+                            Email = tbREmail.Text,
+                            Wachtwoord = Encrypt(tbRWachtwoord.Text),
+                        };
+                        db.InsertGebruiker(newgebruiker);
 
-                    MessageBox.Show("Gebruiker opgeslagen");
+                        MessageBox.Show("Gebruiker opgeslagen");
 
-                    splitContainer1.Panel2Collapsed = true;
+                        splitContainer1.Panel2Collapsed = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Naam bestaat al");
+                    }
                 }
                 else
                 {

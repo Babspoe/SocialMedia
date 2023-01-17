@@ -26,7 +26,7 @@ namespace SocialMedia___Sociout.User_Controls
         }
         int id;
         string gebruiker;
-        string naamp
+        string naamp;
         private void UserControl1_Load(object sender, EventArgs e)
         {
 

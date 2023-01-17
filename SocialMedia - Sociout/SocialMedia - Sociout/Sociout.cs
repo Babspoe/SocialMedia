@@ -19,6 +19,7 @@ namespace SocialMedia___Sociout
         {
             InitializeComponent();
             gebruikersId = GebruikersId;
+            //MessageBox.Show(gebruikersId +"");
         }
         public Sociout()
         {
@@ -49,11 +50,18 @@ namespace SocialMedia___Sociout
                 tpZoeken.Parent = tcPaginas;
                 tcPaginas.SelectedTab = tpZoeken;
 
+                //vul FLP
+                flpGebruikersZoeken.Controls.Clear();
+
                 List<gebruikerZoek> geb = db.SelectGebruikerZoek(txtSearch.Text);
                 for (int i = 0; i < geb.Count; i++)
                 {
-                    GebruikerZoekUC newUC = new GebruikerZoekUC(geb[i].id, geb[i].naam, geb[i].volgers, gebruikersId.ToString());
-                    flpGebruikersZoeken.Controls.Add(newUC);
+                    if (geb[i].id != gebruikersId)
+                    {
+                        GebruikerZoekUC newUC = new GebruikerZoekUC(geb[i].id, geb[i].naam, geb[i].volgers, gebruikersId.ToString());
+                        flpGebruikersZoeken.Controls.Add(newUC);
+                    }
+                    
                 }
             }
         }

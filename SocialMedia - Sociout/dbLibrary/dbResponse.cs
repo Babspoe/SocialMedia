@@ -124,7 +124,7 @@ namespace dbLibrary
 
         public string[] SelectLogin(string naam, string wachtwoord)
         {
-            string query = "SELECT EXISTS(SELECT * FROM gebruiker WHERE Gebruikersnaam = '"+naam+"' && Wachtwoord = '"+wachtwoord+"') AS login, id FROM gebruiker";
+            string query = "SELECT EXISTS(SELECT * FROM gebruiker WHERE Gebruikersnaam = '"+naam+"' && Wachtwoord = '"+wachtwoord+ "') AS login, id FROM gebruiker WHERE Gebruikersnaam = '"+naam+"'";
 
             string[] ret = new string[2];
             connection.Open();
@@ -145,9 +145,31 @@ namespace dbLibrary
             return ret;
         }
 
+        public string SelectCheckLogin(string naam)
+        {
+            string query = "SELECT EXISTS(SELECT * FROM gebruiker WHERE Gebruikersnaam = '"+naam+"') AS login, Id FROM gebruiker WHERE Gebruikersnaam = '"+naam+"';";
+
+            string ret = "";
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                ret = dataReader["login"] + "";
+
+            }
+            dataReader.Close();
+
+            connection.Close();
+
+            return ret;
+        }
+
         public List<gebruikerZoek> SelectGebruikerZoek(string naam)
         {
-            string query = "SELECT Id,`Gebruikersnaam`,COUNT(Volger) AS Volgers FROM `gebruiker` LEFT JOIN volger ON gebruiker.Id = volger.Volgend WHERE `Gebruikersnaam` LIKE '%"+naam+"%' GROUP BY Gebruikersnaam;";
+            string query = "SELECT Id,`Gebruikersnaam`,COUNT(Volgend) AS Volgers FROM `gebruiker` LEFT JOIN volger ON gebruiker.Id = volger.Volger WHERE `Gebruikersnaam` LIKE '%"+naam+"%' GROUP BY Gebruikersnaam";
 
             List<gebruikerZoek> ret = new List<gebruikerZoek>();
             connection.Open();
@@ -273,7 +295,16 @@ WHERE b.Bericht_Id = 0";
             connection.Open();
 
             MySqlCommand cmd = new MySqlCommand(query, connection);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+                
+            }
+            
 
             //image
             //UpdateProductImg(img, insert[0]);
