@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using static System.Net.WebRequestMethods;
 
 namespace dbLibrary
 {
@@ -39,6 +40,7 @@ namespace dbLibrary
         public byte[] Afbeelding { get; set; }
         public int Likes { get; set; }
         public gebruiker gebruiker { get; set; }
+        public int berichtId { get; set; }
     }
 
     public enum BerichtenOpvraag
@@ -366,6 +368,48 @@ GROUP BY b.Id";
 
             //image
             UpdateProductImg(img, insert[0]);
+
+            connection.Close();
+        }
+
+        public void InsertBericht(bericht insert)//, byte[] img
+        {
+            var query = "";
+            if(insert.berichtId != 0)
+            {
+                query = 
+$@"INSERT INTO `bericht`(`Tekst`, `Gebruiker_Id`, `Bericht_Id`)
+VALUES ('{insert.Tekst}',{insert.gebruiker.id}, {insert.berichtId})";
+            }
+            else
+            {
+                if(insert.Afbeelding.Length == 0)
+                {
+                    query =
+$@"INSERT INTO `bericht`(`Tekst`, `Gebruiker_Id`)
+VALUES ('{insert.Tekst}' ,{insert.gebruiker.id})";
+                }
+                else
+                {
+                    query = 
+$@"INSERT INTO `bericht`(`Tekst`, `Afbeelding`, `Gebruiker_Id`)
+VALUES ('{insert.Tekst}',@afbeelding ,{insert.gebruiker.id})";
+                }
+            }
+
+
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            if(insert.Afbeelding.Length != 0)
+            {
+                cmd.Parameters.Add("@afbeelding", MySqlDbType.MediumBlob, insert.Afbeelding.Length).Value = insert.Afbeelding;
+            }
+
+            cmd.ExecuteNonQuery();
+
+            //image
+            //UpdateProductImg(img, insert[0]);
 
             connection.Close();
         }

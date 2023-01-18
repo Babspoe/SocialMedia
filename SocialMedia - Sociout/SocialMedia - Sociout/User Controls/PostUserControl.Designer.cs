@@ -161,14 +161,17 @@
             // 
             // rtxtTekst
             // 
+            this.rtxtTekst.DetectUrls = false;
             this.rtxtTekst.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtxtTekst.Location = new System.Drawing.Point(0, 0);
             this.rtxtTekst.Margin = new System.Windows.Forms.Padding(0);
             this.rtxtTekst.Name = "rtxtTekst";
             this.rtxtTekst.ReadOnly = true;
-            this.rtxtTekst.Size = new System.Drawing.Size(731, 101);
+            this.rtxtTekst.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.rtxtTekst.Size = new System.Drawing.Size(548, 82);
             this.rtxtTekst.TabIndex = 0;
             this.rtxtTekst.Text = "";
+            this.rtxtTekst.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtTekst_LinkClicked);
             // 
             // PostUserControl
             // 

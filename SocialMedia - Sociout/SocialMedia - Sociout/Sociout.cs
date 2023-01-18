@@ -2,30 +2,36 @@
 using SocialMedia___Sociout.User_Controls;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http;
 using System.Windows.Forms;
 using static SocialMedia___Sociout.StaticFunctions;
-using static System.Net.WebRequestMethods;
 
 namespace SocialMedia___Sociout
 {
     public partial class Sociout : Form
     {
-        int gebruikersId = 1;
+        private gebruiker gebruiker;
+        int gebruikersId
+        { 
+            get
+            {
+                return Convert.ToInt32(gebruiker.id);
+            }
+            set
+            {
+                gebruiker = db.SelectGebruiker(value);
+            }
+        }
         public Sociout(int GebruikersId)
         {
             InitializeComponent();
             gebruikersId = GebruikersId;
-            //MessageBox.Show(gebruikersId +"");
         }
         public Sociout()
         {
             InitializeComponent();
+            gebruikersId = 2;
         }
 
         public dbFunctions db = new dbFunctions();
@@ -42,6 +48,31 @@ namespace SocialMedia___Sociout
 
             g.DrawString(text, this.tcPaginas.Font, Brushes.Black, x, y);
         }
+
+
+
+        private void Sociout_Load(object sender, EventArgs e)
+        {
+            tpZoeken.Parent = null;
+            pbProfiel.Image = ByteArrayToImage(gebruiker.Afbeelding);
+            Homepage_Load();
+            Persoonlijk_Load();
+            BerichtAanmaken_Load();
+            Volgend_Load();
+        }
+        private void tabopenen(object sender, EventArgs e)
+        {
+            TabControl tc = (TabControl)sender;
+            //MessageBox.Show(tc.SelectedIndex.ToString());
+            if (tc.SelectedTab != tpZoeken)
+            {
+                tpZoeken.Parent = null;
+            }
+
+        }
+
+
+        #region Zoeken
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
@@ -68,22 +99,12 @@ namespace SocialMedia___Sociout
                 }
             }
         }
-
-        private void Sociout_Load(object sender, EventArgs e)
-        {
-            tpZoeken.Parent = null;
-            Homepage_Load();
-            Persoonlijk_Load();
-            Zoekpage_Load();
-        }
-
-        private void Zoekpage_Load()
-        {
-            
-        }
+        #endregion
         #region Homepage
         private void Homepage_Load()
         {
+            flpHomePage.Controls.Clear();
+
             foreach (var post in db.SelectBericht(BerichtenOpvraag.Alles))
             {
                 var control = new PostUserControl(post,gebruikersId);
@@ -137,23 +158,34 @@ namespace SocialMedia___Sociout
                 tcPaginas.SelectTab(tp);
             }
         }
-        private void tabopenen(object sender, EventArgs e)
+
+
+        #endregion
+        #region Volgend
+        private void Volgend_Load()
         {
-            TabControl tc = (TabControl)sender;
-            //MessageBox.Show(tc.SelectedIndex.ToString());
-            if (tc.SelectedTab != tpZoeken)
+            foreach (var post in db.SelectBericht(BerichtenOpvraag.Volgt, gebruikersId))
             {
-                tpZoeken.Parent = null;
+                var control = new PostUserControl(post);
+                control.OpenReacties += new EventHandler(OpenReactions);
+                control.OpenProfile += new EventHandler(OpenProfile);
+                flpVolgend.Controls.Add(control);
             }
-            
         }
 
         #endregion
         #region Persoonlijk
         private void Persoonlijk_Load()
         {
-            tpPersoonlijk.Controls.Add(new ProfielUserControl(db.SelectGebruiker(gebruikersId), this, gebruikersId.ToString(), true) { Dock = DockStyle.Fill });
+            tpPersoonlijk.Controls.Add(new ProfielUserControl(gebruiker, this, true) { Dock = DockStyle.Fill });
         }
+        #endregion
+        #region Bericht Aanmaken
+        private void BerichtAanmaken_Load()
+        {
+            tpBerichtAanmaken.Controls.Add(new CreatePostUserControl(gebruiker, this) { Dock = DockStyle.Fill });
+        }
+
         #endregion
     }
 }
