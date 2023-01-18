@@ -23,7 +23,7 @@ namespace SocialMedia___Sociout.User_Controls
             }
             set
             {
-                button2.Click += value;
+                button2.Click+= value;
             }
         }
 
@@ -36,7 +36,7 @@ namespace SocialMedia___Sociout.User_Controls
             id = idin;
             naamp = name;
         }
-        int id;
+        public int id;
         string gebruiker;
         string naamp;
         private void UserControl1_Load(object sender, EventArgs e)

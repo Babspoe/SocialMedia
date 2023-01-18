@@ -115,11 +115,12 @@
             // 
             // flpHomePage
             // 
+            this.flpHomePage.AutoScroll = true;
             this.flpHomePage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpHomePage.Location = new System.Drawing.Point(3, 3);
+            this.flpHomePage.Location = new System.Drawing.Point(0, 0);
             this.flpHomePage.Margin = new System.Windows.Forms.Padding(0);
             this.flpHomePage.Name = "flpHomePage";
-            this.flpHomePage.Size = new System.Drawing.Size(1011, 555);
+            this.flpHomePage.Size = new System.Drawing.Size(731, 454);
             this.flpHomePage.TabIndex = 0;
             // 
             // tpPersoonlijk

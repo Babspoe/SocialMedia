@@ -9,12 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static SocialMedia___Sociout.StaticFunctions;
+using static System.Net.WebRequestMethods;
 
 namespace SocialMedia___Sociout
 {
     public partial class Sociout : Form
     {
-        int gebruikersId;
+        int gebruikersId = 1;
         public Sociout(int GebruikersId)
         {
             InitializeComponent();
@@ -26,7 +28,7 @@ namespace SocialMedia___Sociout
             InitializeComponent();
         }
 
-        dbFunctions db = new dbFunctions();
+        public dbFunctions db = new dbFunctions();
 
         //Voor de tabpages de tekst horizontaal zettens
         private void tcPaginas_DrawItem(object sender, DrawItemEventArgs e)
@@ -59,7 +61,7 @@ namespace SocialMedia___Sociout
                     if (geb[i].id != gebruikersId)
                     {
                         GebruikerZoekUC newUC = new GebruikerZoekUC(geb[i].id, geb[i].naam, geb[i].volgers, gebruikersId.ToString());
-                        //Event ToProfiel nog zetten
+                        newUC.ToProfiel = OpenProfile;
                         flpGebruikersZoeken.Controls.Add(newUC);
                     }
                     
@@ -70,51 +72,89 @@ namespace SocialMedia___Sociout
         private void Sociout_Load(object sender, EventArgs e)
         {
             tpZoeken.Parent = null;
-            //Homepage_Load();
-            //Zoekpage_Load();
+            Homepage_Load();
+            Persoonlijk_Load();
+            Zoekpage_Load();
         }
 
         private void Zoekpage_Load()
         {
             
         }
-
+        #region Homepage
         private void Homepage_Load()
         {
-            foreach(var post in db.SelectBericht())
+            foreach (var post in db.SelectBericht(BerichtenOpvraag.Alles))
             {
                 var control = new PostUserControl(post);
                 control.OpenReacties += new EventHandler(OpenReactions);
+                control.OpenProfile += new EventHandler(OpenProfile);
                 flpHomePage.Controls.Add(control);
             }
         }
 
-        private void OpenReactions(object sender, EventArgs e)
+        public void OpenReactions(object sender, EventArgs e)
         {
-            MessageBox.Show("DIT IS EEN REACTIE!");
             //Naar Reacties van bericht
         }
 
-        private void OpenProfile(object sender, EventArgs e)
+        public void OpenProfile(object sender, EventArgs e)
         {
-            MessageBox.Show("DIT IS EEN PROFIEL OPENER");
-            //Functie om profiel te openen van persoon
+            var gebruiker = new gebruiker();
+            var post = (Control)sender;
+            while(post as GebruikerZoekUC == null)
+            {
+                post = post.Parent;
+                var t = post.GetType();
+            }
+            if(post is PostUserControl)
+            {
+                gebruiker = ((PostUserControl)post).bericht.gebruiker;
+            }
+            else
+            {
+                gebruiker = db.SelectGebruiker(((GebruikerZoekUC)post).id);
+            }
+            if (tcPaginas.TabPages.ContainsKey("tpProfiel"))
+            {
+                if (!((TabPage)tcPaginas.GetControl(tcPaginas.TabPages.IndexOfKey("tpProfiel"))).Controls.ContainsKey(gebruiker.id))
+                {
+                    tcPaginas.TabPages.RemoveByKey("tpProfiel");
+                }
+                else
+                {
+                    tcPaginas.SelectTab("tpProfiel");
+                    return;
+                }
+            }
+            if(Convert.ToInt32(gebruiker.id) == gebruikersId)
+            {
+                tcPaginas.SelectTab("tpPersoonlijk");
+            }
+            else
+            {
+                var tp = new TabPage { Parent = tcPaginas, Name = "tpProfiel", Text = "Profiel" };
+                tp.Controls.Add(new ProfielUserControl(gebruiker, this) { Name = gebruiker.id });
+                tcPaginas.SelectTab(tp);
+            }
         }
-
         private void tabopenen(object sender, EventArgs e)
         {
             TabControl tc = (TabControl)sender;
             //MessageBox.Show(tc.SelectedIndex.ToString());
-            if (tc.SelectedIndex != 4)
+            if (tc.SelectedTab != tpZoeken)
             {
                 tpZoeken.Parent = null;
             }
             
         }
 
-        protected void UserControl_ButtonClick(object sender, EventArgs e)
+        #endregion
+        #region Persoonlijk
+        private void Persoonlijk_Load()
         {
-            //handle the event 
+            tpPersoonlijk.Controls.Add(new ProfielUserControl(db.SelectGebruiker(gebruikersId), this, true) { Dock = DockStyle.Fill });
         }
+        #endregion
     }
 }

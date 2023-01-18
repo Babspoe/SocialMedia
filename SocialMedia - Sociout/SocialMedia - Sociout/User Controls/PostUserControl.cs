@@ -19,6 +19,29 @@ namespace SocialMedia___Sociout.User_Controls
                 btnReactions.Click+= value;
             }
         }
+        public EventHandler Like
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                btnLike.Click += value;
+            }
+        }
+        public EventHandler OpenProfile
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                lblGebruikersnaam.Click += value;
+                pbProfielAfbeelding.Click += value;
+            }
+        }
 
         public PostUserControl(bericht bericht)
         {
