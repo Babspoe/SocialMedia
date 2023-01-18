@@ -75,3 +75,4 @@ C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia
 C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia___Sociout.User_Controls.PostUserControl.resources
 C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia___Sociout.User_Controls.ProfielUserControl.resources
 C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia___Sociout.User_Controls.GebruikerZoekUC.resources
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia___Sociout.User_Controls.CreatePostUserControl.resources

@@ -1,9 +1,6 @@
 ﻿using dbLibrary;
-using SocialMedia___Sociout.User_Controls;
-using System;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
 
 namespace SocialMedia___Sociout
 {
@@ -17,6 +14,23 @@ namespace SocialMedia___Sociout
             {
                 return Image.FromStream(ms);
             }
+        }
+
+        public static byte[] ImageToByteArray(Image imageIn)
+        {
+            if(imageIn != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    imageIn.Save(ms, imageIn.RawFormat);
+                    return ms.ToArray();
+                }
+            }
+            else
+            {
+                return new byte[0];
+            }
+
         }
 
     }
