@@ -36,25 +36,39 @@ namespace SocialMedia___Sociout.User_Controls
             id = idin;
             naamp = name;
         }
-        public int id;
+        public int id; 
         string gebruiker;
         string naamp;
         private void UserControl1_Load(object sender, EventArgs e)
-        {
-
+        { 
+            if (db.SelectVolgerExists(gebruiker, id.ToString()) == "1")
+            {
+                button1.Text = "Ontvolgen";
+            }
         }
         dbFunctions db = new dbFunctions();
         private void button1_Click(object sender, EventArgs e)
         {
-            //maak volger
-            volger newvolger = new volger()
+            if (button1.Text == "Volgen")
             {
-                Volgend = gebruiker,
-                Volger = id.ToString(),
-                Datum = DateTime.Now,
-            };
-            db.InsertVolger(newvolger);
-            MessageBox.Show("Je volgt nu " + naamp);
+                //maak volger
+                volger newvolger = new volger()
+                {
+                    Volgend = gebruiker,
+                    Volger = id.ToString(),
+                    Datum = DateTime.Now,
+                };
+                db.InsertVolger(newvolger);
+                MessageBox.Show("Je volgt nu " + naamp);
+                button1.Text = "Ontvolgen";
+            }
+            else
+            {
+                db.DeleteVolger(gebruiker, id.ToString());
+                MessageBox.Show("Je volgt nu niet meer " + naamp);
+                button1.Text = "Volgen";
+            }
+            
         }
 
 

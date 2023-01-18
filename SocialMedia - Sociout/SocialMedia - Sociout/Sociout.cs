@@ -62,7 +62,7 @@ namespace SocialMedia___Sociout
                     {
                         GebruikerZoekUC newUC = new GebruikerZoekUC(geb[i].id, geb[i].naam, geb[i].volgers, gebruikersId.ToString());
                         newUC.ToProfiel = OpenProfile;
-                        flpGebruikersZoeken.Controls.Add(newUC);
+                        flpGebruikersZoeken.Controls.Add(newUC); 
                     }
                     
                 }
@@ -86,7 +86,7 @@ namespace SocialMedia___Sociout
         {
             foreach (var post in db.SelectBericht(BerichtenOpvraag.Alles))
             {
-                var control = new PostUserControl(post);
+                var control = new PostUserControl(post,gebruikersId);
                 control.OpenReacties += new EventHandler(OpenReactions);
                 control.OpenProfile += new EventHandler(OpenProfile);
                 flpHomePage.Controls.Add(control);
@@ -134,7 +134,7 @@ namespace SocialMedia___Sociout
             else
             {
                 var tp = new TabPage { Parent = tcPaginas, Name = "tpProfiel", Text = "Profiel" };
-                tp.Controls.Add(new ProfielUserControl(gebruiker, this) { Name = gebruiker.id });
+                tp.Controls.Add(new ProfielUserControl(gebruiker, this, gebruikersId.ToString()) { Name = gebruiker.id });
                 tcPaginas.SelectTab(tp);
             }
         }
@@ -153,7 +153,7 @@ namespace SocialMedia___Sociout
         #region Persoonlijk
         private void Persoonlijk_Load()
         {
-            tpPersoonlijk.Controls.Add(new ProfielUserControl(db.SelectGebruiker(gebruikersId), this, true) { Dock = DockStyle.Fill });
+            tpPersoonlijk.Controls.Add(new ProfielUserControl(db.SelectGebruiker(gebruikersId), this, gebruikersId.ToString(), true) { Dock = DockStyle.Fill });
         }
         #endregion
     }

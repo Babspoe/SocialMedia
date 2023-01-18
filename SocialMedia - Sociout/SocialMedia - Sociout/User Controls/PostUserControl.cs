@@ -43,12 +43,13 @@ namespace SocialMedia___Sociout.User_Controls
             }
         }
 
-        public PostUserControl(bericht bericht)
+        public PostUserControl(bericht bericht, int GebruikerId)
         {
             InitializeComponent();
             this.bericht = bericht;
+            gebruikerId = GebruikerId.ToString();
         }
-
+        string gebruikerId;
         private void PostUserControl_Load(object sender, EventArgs e)
         {
             rtxtTekst.Text = bericht.Tekst;
@@ -66,6 +67,18 @@ namespace SocialMedia___Sociout.User_Controls
                 scContent.Panel1Collapsed = true;
             }
             lblLikes.Text = bericht.Likes.ToString();
+        }
+
+        dbFunctions db = new dbFunctions();
+        private void btnLike_Click(object sender, EventArgs e)
+        {
+            Like newlike = new Like()
+            {
+                Bericht_id = bericht.id.ToString(),
+                Gebruiker_id = gebruikerId,
+            };
+            db.InsertLike(newlike);
+            MessageBox.Show("Geliked");
         }
     }
 }

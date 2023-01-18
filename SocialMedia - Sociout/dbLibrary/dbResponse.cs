@@ -26,6 +26,12 @@ namespace dbLibrary
         public byte[] Afbeelding { get; set; }
     }
 
+    public class Like
+    {
+        public string Bericht_id { get; set; }
+        public string Gebruiker_id { get; set; }
+    }
+
     public class bericht
     {
         public int id { get; set; }
@@ -72,7 +78,7 @@ namespace dbLibrary
 
         private void Initialize()
         {
-            string server = "localhost";
+            string server = "10.12.182.2";
             string database = "socialmedia";
             string uid = "root";
             string password = "";
@@ -166,7 +172,29 @@ namespace dbLibrary
 
             while (dataReader.Read())
             {
-                ret = dataReader["login"] + "";
+                ret = dataReader["bestaat"] + "";
+
+            }
+            dataReader.Close();
+
+            connection.Close();
+
+            return ret;
+        }
+
+        public string SelectVolgerExists(string idVolgend, string idVolger)
+        {
+            string query = "SELECT EXISTS(SELECT * FROM volger WHERE `Volgend` = '"+idVolgend+"' AND `Volger` = '"+idVolger+"') AS bestaat FROM `volger` WHERE 1 GROUP BY bestaat;";
+
+            string ret = "";
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                ret = dataReader["bestaat"] + "";
 
             }
             dataReader.Close();
@@ -178,7 +206,34 @@ namespace dbLibrary
 
         public List<gebruikerZoek> SelectGebruikerZoek(string naam)
         {
-            string query = "SELECT Id,`Gebruikersnaam`,COUNT(Volgend) AS Volgers FROM `gebruiker` LEFT JOIN volger ON gebruiker.Id = volger.Volger WHERE `Gebruikersnaam` LIKE '%"+naam+"%' GROUP BY Gebruikersnaam";
+            string query = "SELECT Id,`Gebruikersnaam`,COUNT(Volgend) AS Volgers FROM `gebruiker` LEFT JOIN volger ON gebruiker.Id = volger.Volger WHERE `Gebruikersnaam` LIKE '%"+naam+ "%' GROUP BY Gebruikersnaam ORDER BY COUNT(Volgend) DESC";
+
+            List<gebruikerZoek> ret = new List<gebruikerZoek>();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                gebruikerZoek newGebruikerZoek = new gebruikerZoek()
+                {
+                    id = Convert.ToInt32(dataReader["Id"]),
+                    naam = dataReader["Gebruikersnaam"] + "",
+                    volgers = dataReader["Volgers"] + "",
+                };
+                ret.Add(newGebruikerZoek);
+            }
+            dataReader.Close();
+
+            connection.Close();
+
+            return ret;
+        }
+
+        public List<gebruikerZoek> SelectVolgt(string id)
+        {
+            string query = "SELECT Id,`Gebruikersnaam`,COUNT(v2.Volgend) AS Volgers FROM `gebruiker` LEFT JOIN volger v1 ON gebruiker.Id = v1.Volger LEFT JOIN volger v2 ON gebruiker.Id = v2.Volger WHERE v1.`Volgend` = '"+id+ "' GROUP BY `Gebruikersnaam` ORDER BY COUNT(v2.Volgend) DESC;";
 
             List<gebruikerZoek> ret = new List<gebruikerZoek>();
             connection.Open();
@@ -329,6 +384,28 @@ GROUP BY b.Id";
             connection.Close();
         }
 
+        public void InsertLike(Like insert)//, byte[] img
+        {
+            string query = "INSERT INTO `like`(`Bericht_Id`, `Gebruiker_Id`) VALUES ('"+insert.Bericht_id+"','"+insert.Gebruiker_id+"')";
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+            
+
+            //image
+            //UpdateProductImg(img, insert[0]);
+
+            connection.Close();
+        }
+
         public void InsertVolger(volger insert)
         {
             string query = "INSERT INTO `volger`(`Volgend`, `Volger`, `Datum`) VALUES ('"+insert.Volgend+ "','"+insert.Volger+"','"+insert.Datum+"')";
@@ -389,6 +466,19 @@ GROUP BY b.Id";
         public void DeleteOnName(string name)
         {
             string query = "DELETE FROM `table` WHERE `kolom` = '" + name + "'";
+
+            connection.Open();
+
+            //run mysql command
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
+
+            connection.Close();
+        }
+
+        public void DeleteVolger(string volger,string volgend)
+        {
+            string query = "DELETE FROM `volger` WHERE `Volgend` = '"+volger+"' AND `Volger` = '"+volgend+"'";
 
             connection.Open();
 

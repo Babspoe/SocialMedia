@@ -54,7 +54,7 @@
             this.pbProfielAfbeelding.Location = new System.Drawing.Point(0, 0);
             this.pbProfielAfbeelding.Margin = new System.Windows.Forms.Padding(0);
             this.pbProfielAfbeelding.Name = "pbProfielAfbeelding";
-            this.pbProfielAfbeelding.Size = new System.Drawing.Size(50, 50);
+            this.pbProfielAfbeelding.Size = new System.Drawing.Size(67, 62);
             this.pbProfielAfbeelding.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbProfielAfbeelding.TabIndex = 0;
             this.pbProfielAfbeelding.TabStop = false;
@@ -63,10 +63,10 @@
             // 
             this.lblGebruikersnaam.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblGebruikersnaam.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.lblGebruikersnaam.Location = new System.Drawing.Point(50, 0);
+            this.lblGebruikersnaam.Location = new System.Drawing.Point(67, 0);
             this.lblGebruikersnaam.Margin = new System.Windows.Forms.Padding(0);
             this.lblGebruikersnaam.Name = "lblGebruikersnaam";
-            this.lblGebruikersnaam.Size = new System.Drawing.Size(498, 50);
+            this.lblGebruikersnaam.Size = new System.Drawing.Size(664, 62);
             this.lblGebruikersnaam.TabIndex = 1;
             this.lblGebruikersnaam.Text = "Gebruikernaam";
             this.lblGebruikersnaam.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -79,7 +79,7 @@
             this.pnlUser.Location = new System.Drawing.Point(0, 0);
             this.pnlUser.Margin = new System.Windows.Forms.Padding(0);
             this.pnlUser.Name = "pnlUser";
-            this.pnlUser.Size = new System.Drawing.Size(548, 50);
+            this.pnlUser.Size = new System.Drawing.Size(731, 62);
             this.pnlUser.TabIndex = 2;
             // 
             // pnlFloor
@@ -88,38 +88,42 @@
             this.pnlFloor.Controls.Add(this.btnLike);
             this.pnlFloor.Controls.Add(this.btnReactions);
             this.pnlFloor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFloor.Location = new System.Drawing.Point(0, 283);
+            this.pnlFloor.Location = new System.Drawing.Point(0, 348);
             this.pnlFloor.Margin = new System.Windows.Forms.Padding(0);
             this.pnlFloor.Name = "pnlFloor";
-            this.pnlFloor.Size = new System.Drawing.Size(548, 25);
+            this.pnlFloor.Size = new System.Drawing.Size(731, 31);
             this.pnlFloor.TabIndex = 3;
             // 
             // lblLikes
             // 
             this.lblLikes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLikes.AutoSize = true;
-            this.lblLikes.Location = new System.Drawing.Point(425, 7);
+            this.lblLikes.Location = new System.Drawing.Point(567, 9);
+            this.lblLikes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLikes.Name = "lblLikes";
-            this.lblLikes.Size = new System.Drawing.Size(13, 13);
+            this.lblLikes.Size = new System.Drawing.Size(14, 16);
             this.lblLikes.TabIndex = 2;
             this.lblLikes.Text = "0";
             // 
             // btnLike
             // 
             this.btnLike.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLike.Location = new System.Drawing.Point(344, 2);
+            this.btnLike.Location = new System.Drawing.Point(459, 2);
+            this.btnLike.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLike.Name = "btnLike";
-            this.btnLike.Size = new System.Drawing.Size(75, 23);
+            this.btnLike.Size = new System.Drawing.Size(100, 28);
             this.btnLike.TabIndex = 1;
             this.btnLike.Text = "like";
             this.btnLike.UseVisualStyleBackColor = true;
+            this.btnLike.Click += new System.EventHandler(this.btnLike_Click);
             // 
             // btnReactions
             // 
             this.btnReactions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReactions.Location = new System.Drawing.Point(473, 2);
+            this.btnReactions.Location = new System.Drawing.Point(631, 2);
+            this.btnReactions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReactions.Name = "btnReactions";
-            this.btnReactions.Size = new System.Drawing.Size(75, 23);
+            this.btnReactions.Size = new System.Drawing.Size(100, 28);
             this.btnReactions.TabIndex = 0;
             this.btnReactions.Text = "Reacties";
             this.btnReactions.UseVisualStyleBackColor = true;
@@ -127,7 +131,7 @@
             // scContent
             // 
             this.scContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scContent.Location = new System.Drawing.Point(0, 50);
+            this.scContent.Location = new System.Drawing.Point(0, 62);
             this.scContent.Margin = new System.Windows.Forms.Padding(0);
             this.scContent.Name = "scContent";
             this.scContent.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -139,8 +143,8 @@
             // scContent.Panel2
             // 
             this.scContent.Panel2.Controls.Add(this.rtxtTekst);
-            this.scContent.Size = new System.Drawing.Size(548, 233);
-            this.scContent.SplitterDistance = 150;
+            this.scContent.Size = new System.Drawing.Size(731, 286);
+            this.scContent.SplitterDistance = 184;
             this.scContent.SplitterWidth = 1;
             this.scContent.TabIndex = 4;
             // 
@@ -148,8 +152,9 @@
             // 
             this.pbAfbeelding.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbAfbeelding.Location = new System.Drawing.Point(0, 0);
+            this.pbAfbeelding.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbAfbeelding.Name = "pbAfbeelding";
-            this.pbAfbeelding.Size = new System.Drawing.Size(548, 150);
+            this.pbAfbeelding.Size = new System.Drawing.Size(731, 184);
             this.pbAfbeelding.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbAfbeelding.TabIndex = 0;
             this.pbAfbeelding.TabStop = false;
@@ -161,20 +166,20 @@
             this.rtxtTekst.Margin = new System.Windows.Forms.Padding(0);
             this.rtxtTekst.Name = "rtxtTekst";
             this.rtxtTekst.ReadOnly = true;
-            this.rtxtTekst.Size = new System.Drawing.Size(548, 82);
+            this.rtxtTekst.Size = new System.Drawing.Size(731, 101);
             this.rtxtTekst.TabIndex = 0;
             this.rtxtTekst.Text = "";
             // 
             // PostUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.scContent);
             this.Controls.Add(this.pnlFloor);
             this.Controls.Add(this.pnlUser);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "PostUserControl";
-            this.Size = new System.Drawing.Size(548, 308);
+            this.Size = new System.Drawing.Size(731, 379);
             this.Load += new System.EventHandler(this.PostUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbProfielAfbeelding)).EndInit();
             this.pnlUser.ResumeLayout(false);

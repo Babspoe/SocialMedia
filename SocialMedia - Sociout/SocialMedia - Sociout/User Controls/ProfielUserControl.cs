@@ -16,22 +16,24 @@ namespace SocialMedia___Sociout.User_Controls
     {
         public gebruiker gebruiker;
         private Sociout parent;
+        string user;
         public ProfielUserControl()
         {
             InitializeComponent();
         }
 
-        public ProfielUserControl(gebruiker g, Sociout p, bool isMijzelf = false)
+        public ProfielUserControl(gebruiker g, Sociout p, string User, bool isMijzelf = false)
         {
             gebruiker = g;
             parent = p;
+            user = User;
             InitializeComponent();
             if (isMijzelf)
             {
                 btnVolgen.Hide();
             }
         }
-
+        dbFunctions db = new dbFunctions();
         private void ProfielUserControl_Load(object sender, EventArgs e)
         {
             //Check of je ze volgt
@@ -46,6 +48,19 @@ namespace SocialMedia___Sociout.User_Controls
             SetBerichtInFlp(flpLaatste, BerichtenOpvraag.Gebruiker);
             SetBerichtInFlp(flpGeliked, BerichtenOpvraag.Geliked);
             SetVolgend();
+
+
+            //volgt
+            //vul FLP
+            flpVolgt.Controls.Clear();
+
+            List<gebruikerZoek> geb = db.SelectVolgt(gebruiker.id);
+            for (int i = 0; i < geb.Count; i++)
+            {
+                GebruikerZoekUC newUC = new GebruikerZoekUC(geb[i].id, geb[i].naam, geb[i].volgers, user);
+                 newUC.ToProfiel = parent.OpenProfile;
+                flpVolgt.Controls.Add(newUC);
+            }
         }
 
         private void SetVolgend()
@@ -57,7 +72,7 @@ namespace SocialMedia___Sociout.User_Controls
         {
             foreach (var post in parent.db.SelectBericht(bo, Convert.ToInt32(gebruiker.id)))
             {
-                var control = new PostUserControl(post);
+                var control = new PostUserControl(post, Convert.ToInt16(gebruiker.id));
                 control.OpenReacties += new EventHandler(parent.OpenReactions);
                 control.OpenProfile += new EventHandler(parent.OpenProfile);
                 flp.Controls.Add(control);
@@ -75,6 +90,11 @@ namespace SocialMedia___Sociout.User_Controls
                     //db.InsertVolgen(gebruiker.Id, parent.gebruikersId);
                     break;
             }
+        }
+
+        private void pnlHeader_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
