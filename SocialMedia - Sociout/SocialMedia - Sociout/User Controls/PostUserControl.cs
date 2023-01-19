@@ -73,6 +73,14 @@ namespace SocialMedia___Sociout.User_Controls
                 scContent.Panel1Collapsed = true;
             }
             lblLikes.Text = bericht.Likes.ToString();
+            if (db.SelectLikeExists(this.bericht.id.ToString(), gebruikerId.ToString()) == "1")
+            {
+                btnLike.Text = "Unlike";
+            }
+            else
+            {
+                btnLike.Text = "like";
+            }
         }
 
         void ParseLine(string line)
@@ -109,13 +117,24 @@ namespace SocialMedia___Sociout.User_Controls
         dbFunctions db = new dbFunctions();
         private void btnLike_Click(object sender, EventArgs e)
         {
-            Like newlike = new Like()
+            if (btnLike.Text == "like")
             {
-                Bericht_id = bericht.id.ToString(),
-                Gebruiker_id = gebruikerId,
-            };
-            db.InsertLike(newlike);
-            MessageBox.Show("Geliked");
+                Like newlike = new Like()
+                {
+                    Bericht_id = bericht.id.ToString(),
+                    Gebruiker_id = gebruikerId,
+                };
+                db.InsertLike(newlike);
+                MessageBox.Show("Geliked");
+                btnLike.Text = "Unlike";
+            }
+            else
+            {
+                db.DeleteLike(bericht.id.ToString(), gebruikerId);
+                MessageBox.Show("Niet meer geliked");
+                btnLike.Text = "like";
+            }
+            
         }
     }
 }
