@@ -166,7 +166,7 @@ namespace SocialMedia___Sociout
         {
             foreach (var post in db.SelectBericht(BerichtenOpvraag.Volgt, gebruikersId))
             {
-                var control = new PostUserControl(post);
+                var control = new PostUserControl(post, gebruikersId);
                 control.OpenReacties += new EventHandler(OpenReactions);
                 control.OpenProfile += new EventHandler(OpenProfile);
                 flpVolgend.Controls.Add(control);
@@ -177,7 +177,7 @@ namespace SocialMedia___Sociout
         #region Persoonlijk
         private void Persoonlijk_Load()
         {
-            tpPersoonlijk.Controls.Add(new ProfielUserControl(gebruiker, this, true) { Dock = DockStyle.Fill });
+            tpPersoonlijk.Controls.Add(new ProfielUserControl(gebruiker, this, gebruikersId.ToString(), true) { Dock = DockStyle.Fill });
         }
         #endregion
         #region Bericht Aanmaken

@@ -76,5 +76,10 @@ namespace SocialMedia___Sociout.User_Controls
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

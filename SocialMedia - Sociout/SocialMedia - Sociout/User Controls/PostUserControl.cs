@@ -57,7 +57,8 @@ namespace SocialMedia___Sociout.User_Controls
         string gebruikerId;
         private void PostUserControl_Load(object sender, EventArgs e)
         {
-            ParseLine(bericht.Tekst);
+            //ParseLine(bericht.Tekst);
+            rtxtTekst.Text = bericht.Tekst;
             lblGebruikersnaam.Text = bericht.gebruiker.Gebruikersnaam;
             if(bericht.gebruiker.Afbeelding!= null)
             {

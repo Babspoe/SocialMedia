@@ -80,7 +80,7 @@ namespace dbLibrary
 
         private void Initialize()
         {
-            string server = "10.12.182.2";
+            string server = "localhost";
             string database = "socialmedia";
             string uid = "root";
             string password = "";
