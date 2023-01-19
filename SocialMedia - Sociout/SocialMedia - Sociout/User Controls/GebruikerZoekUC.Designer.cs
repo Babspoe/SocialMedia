@@ -108,7 +108,7 @@
             this.button3.Location = new System.Drawing.Point(704, 4);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 53);
+            this.button3.Size = new System.Drawing.Size(150, 53);
             this.button3.TabIndex = 6;
             this.button3.Text = "Account";
             this.button3.UseVisualStyleBackColor = true;
