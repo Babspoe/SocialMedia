@@ -59,6 +59,7 @@ namespace SocialMedia___Sociout
             Persoonlijk_Load();
             BerichtAanmaken_Load();
             Volgend_Load();
+            pbProfiel.ContextMenuStrip = cmsProfiel;
         }
         private void tabopenen(object sender, EventArgs e)
         {
@@ -127,10 +128,8 @@ namespace SocialMedia___Sociout
             }
             var puc = (PostUserControl)post;
 
-            var page = new TabPage();
-            //bericht b, List<bericht> r, gebruiker g, Sociout parent
+            var page = new TabPage() { Parent = tcPaginas };
             page.Controls.Add(new ReactiesUserControl(puc.bericht, db.SelectBericht(BerichtenOpvraag.Reacties, puc.bericht.id), gebruiker, this ) { Dock = DockStyle.Fill, Name = "tpReacties", Text = "Reacties" });
-            page.Parent = tcPaginas;
             tcPaginas.SelectTab(page);
         }
 
@@ -203,11 +202,24 @@ namespace SocialMedia___Sociout
 
         #endregion
 
-        private void btnLoguit_Click(object sender, EventArgs e)
+        private void tsmiProfiel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsmiUitlog_Click(object sender, EventArgs e)
         {
             InlogForm m = new InlogForm();
             m.Show();
             this.Hide();
+        }
+
+        private void pbProfiel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                pbProfiel.ContextMenuStrip.Show();
+            }
         }
     }
 }
