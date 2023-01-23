@@ -206,6 +206,28 @@ namespace dbLibrary
             return ret;
         }
 
+        public string SelectLikeExists(string Bericht, string Gebruiker)
+        {
+            string query = "SELECT EXISTS(SELECT * FROM `like` WHERE `Bericht_Id` = '" + Bericht + "' AND `Gebruiker_Id` = '" + Gebruiker + "') AS bestaat FROM `like` WHERE 1 GROUP BY bestaat;";
+
+            string ret = "";
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                ret = dataReader["bestaat"] + "";
+
+            }
+            dataReader.Close();
+
+            connection.Close();
+
+            return ret;
+        }
+
         public List<gebruikerZoek> SelectGebruikerZoek(string naam)
         {
             string query = "SELECT Id,`Gebruikersnaam`,COUNT(Volgend) AS Volgers FROM `gebruiker` LEFT JOIN volger ON gebruiker.Id = volger.Volger WHERE `Gebruikersnaam` LIKE '%"+naam+ "%' GROUP BY Gebruikersnaam ORDER BY COUNT(Volgend) DESC";
@@ -523,6 +545,19 @@ VALUES ('{insert.Tekst}',@afbeelding ,{insert.gebruiker.id})";
         public void DeleteVolger(string volger,string volgend)
         {
             string query = "DELETE FROM `volger` WHERE `Volgend` = '"+volger+"' AND `Volger` = '"+volgend+"'";
+
+            connection.Open();
+
+            //run mysql command
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
+
+            connection.Close();
+        }
+
+        public void DeleteLike(string Bericht, string Gebruikerid)
+        {
+            string query = "DELETE FROM `like` WHERE `Bericht_Id` = '"+Bericht+"' AND `Gebruiker_Id` = '"+Gebruikerid+"'";
 
             connection.Open();
 

@@ -10,10 +10,14 @@ namespace SocialMedia___Sociout
 
         public static Image ByteArrayToImage(byte[] bytes)
         {
-            using (var ms = new MemoryStream(bytes))
+            if(bytes != null) 
             {
-                return Image.FromStream(ms);
+                using (var ms = new MemoryStream(bytes))
+                {
+                    return Image.FromStream(ms);
+                }
             }
+            return null;
         }
 
         public static byte[] ImageToByteArray(Image imageIn)

@@ -40,6 +40,7 @@
             this.tpZoeken = new System.Windows.Forms.TabPage();
             this.flpGebruikersZoeken = new System.Windows.Forms.FlowLayoutPanel();
             this.tpBerichtAanmaken = new System.Windows.Forms.TabPage();
+            this.btnLoguit = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfiel)).BeginInit();
             this.tcPaginas.SuspendLayout();
@@ -50,33 +51,34 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.Controls.Add(this.btnLoguit);
             this.pnlHeader.Controls.Add(this.txtSearch);
             this.pnlHeader.Controls.Add(this.pbProfiel);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Margin = new System.Windows.Forms.Padding(0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(859, 65);
+            this.pnlHeader.Size = new System.Drawing.Size(1145, 80);
             this.pnlHeader.TabIndex = 0;
             // 
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.txtSearch.Location = new System.Drawing.Point(614, 22);
+            this.txtSearch.Location = new System.Drawing.Point(819, 27);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(0);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(166, 23);
+            this.txtSearch.Size = new System.Drawing.Size(220, 26);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // pbProfiel
             // 
             this.pbProfiel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pbProfiel.Location = new System.Drawing.Point(794, 0);
+            this.pbProfiel.Location = new System.Drawing.Point(1058, 0);
             this.pbProfiel.Margin = new System.Windows.Forms.Padding(0);
             this.pbProfiel.Name = "pbProfiel";
-            this.pbProfiel.Size = new System.Drawing.Size(65, 65);
+            this.pbProfiel.Size = new System.Drawing.Size(87, 80);
             this.pbProfiel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbProfiel.TabIndex = 0;
             this.pbProfiel.TabStop = false;
@@ -92,11 +94,12 @@
             this.tcPaginas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcPaginas.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tcPaginas.ItemSize = new System.Drawing.Size(30, 120);
-            this.tcPaginas.Location = new System.Drawing.Point(0, 65);
+            this.tcPaginas.Location = new System.Drawing.Point(0, 80);
+            this.tcPaginas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tcPaginas.Multiline = true;
             this.tcPaginas.Name = "tcPaginas";
             this.tcPaginas.SelectedIndex = 0;
-            this.tcPaginas.Size = new System.Drawing.Size(859, 462);
+            this.tcPaginas.Size = new System.Drawing.Size(1145, 569);
             this.tcPaginas.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tcPaginas.TabIndex = 1;
             this.tcPaginas.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tcPaginas_DrawItem);
@@ -108,8 +111,8 @@
             this.tpHome.Location = new System.Drawing.Point(124, 4);
             this.tpHome.Margin = new System.Windows.Forms.Padding(0);
             this.tpHome.Name = "tpHome";
-            this.tpHome.Padding = new System.Windows.Forms.Padding(2);
-            this.tpHome.Size = new System.Drawing.Size(731, 454);
+            this.tpHome.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tpHome.Size = new System.Drawing.Size(1017, 561);
             this.tpHome.TabIndex = 0;
             this.tpHome.Text = "Home";
             this.tpHome.UseVisualStyleBackColor = true;
@@ -118,10 +121,10 @@
             // 
             this.flpHomePage.AutoScroll = true;
             this.flpHomePage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpHomePage.Location = new System.Drawing.Point(2, 2);
+            this.flpHomePage.Location = new System.Drawing.Point(3, 2);
             this.flpHomePage.Margin = new System.Windows.Forms.Padding(0);
             this.flpHomePage.Name = "flpHomePage";
-            this.flpHomePage.Size = new System.Drawing.Size(727, 450);
+            this.flpHomePage.Size = new System.Drawing.Size(1011, 557);
             this.flpHomePage.TabIndex = 0;
             // 
             // tpPersoonlijk
@@ -129,7 +132,7 @@
             this.tpPersoonlijk.Location = new System.Drawing.Point(124, 4);
             this.tpPersoonlijk.Margin = new System.Windows.Forms.Padding(0);
             this.tpPersoonlijk.Name = "tpPersoonlijk";
-            this.tpPersoonlijk.Size = new System.Drawing.Size(731, 454);
+            this.tpPersoonlijk.Size = new System.Drawing.Size(1017, 561);
             this.tpPersoonlijk.TabIndex = 1;
             this.tpPersoonlijk.Text = "Mijn Pagina";
             this.tpPersoonlijk.UseVisualStyleBackColor = true;
@@ -140,7 +143,7 @@
             this.tpVolgend.Location = new System.Drawing.Point(124, 4);
             this.tpVolgend.Margin = new System.Windows.Forms.Padding(0);
             this.tpVolgend.Name = "tpVolgend";
-            this.tpVolgend.Size = new System.Drawing.Size(731, 454);
+            this.tpVolgend.Size = new System.Drawing.Size(1017, 561);
             this.tpVolgend.TabIndex = 2;
             this.tpVolgend.Text = "Volgend";
             this.tpVolgend.UseVisualStyleBackColor = true;
@@ -150,17 +153,18 @@
             this.flpVolgend.AutoScroll = true;
             this.flpVolgend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpVolgend.Location = new System.Drawing.Point(0, 0);
+            this.flpVolgend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flpVolgend.Name = "flpVolgend";
-            this.flpVolgend.Size = new System.Drawing.Size(731, 454);
+            this.flpVolgend.Size = new System.Drawing.Size(1017, 561);
             this.flpVolgend.TabIndex = 0;
             // 
             // tpZoeken
             // 
             this.tpZoeken.Controls.Add(this.flpGebruikersZoeken);
             this.tpZoeken.Location = new System.Drawing.Point(124, 4);
-            this.tpZoeken.Margin = new System.Windows.Forms.Padding(2);
+            this.tpZoeken.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tpZoeken.Name = "tpZoeken";
-            this.tpZoeken.Size = new System.Drawing.Size(731, 454);
+            this.tpZoeken.Size = new System.Drawing.Size(1017, 561);
             this.tpZoeken.TabIndex = 4;
             this.tpZoeken.Text = "Zoeken";
             this.tpZoeken.UseVisualStyleBackColor = true;
@@ -169,29 +173,41 @@
             // 
             this.flpGebruikersZoeken.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpGebruikersZoeken.Location = new System.Drawing.Point(0, 0);
-            this.flpGebruikersZoeken.Margin = new System.Windows.Forms.Padding(2);
+            this.flpGebruikersZoeken.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flpGebruikersZoeken.Name = "flpGebruikersZoeken";
-            this.flpGebruikersZoeken.Size = new System.Drawing.Size(731, 454);
+            this.flpGebruikersZoeken.Size = new System.Drawing.Size(1017, 561);
             this.flpGebruikersZoeken.TabIndex = 0;
             // 
             // tpBerichtAanmaken
             // 
             this.tpBerichtAanmaken.Location = new System.Drawing.Point(124, 4);
+            this.tpBerichtAanmaken.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tpBerichtAanmaken.Name = "tpBerichtAanmaken";
-            this.tpBerichtAanmaken.Padding = new System.Windows.Forms.Padding(3);
-            this.tpBerichtAanmaken.Size = new System.Drawing.Size(731, 454);
+            this.tpBerichtAanmaken.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpBerichtAanmaken.Size = new System.Drawing.Size(1017, 561);
             this.tpBerichtAanmaken.TabIndex = 5;
             this.tpBerichtAanmaken.Text = "Nieuw Bericht";
             this.tpBerichtAanmaken.UseVisualStyleBackColor = true;
             // 
+            // btnLoguit
+            // 
+            this.btnLoguit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoguit.Location = new System.Drawing.Point(13, 13);
+            this.btnLoguit.Name = "btnLoguit";
+            this.btnLoguit.Size = new System.Drawing.Size(110, 60);
+            this.btnLoguit.TabIndex = 2;
+            this.btnLoguit.Text = "Log uit";
+            this.btnLoguit.UseVisualStyleBackColor = true;
+            this.btnLoguit.Click += new System.EventHandler(this.btnLoguit_Click);
+            // 
             // Sociout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 527);
+            this.ClientSize = new System.Drawing.Size(1145, 649);
             this.Controls.Add(this.tcPaginas);
             this.Controls.Add(this.pnlHeader);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Sociout";
             this.Text = "Sociout";
             this.Load += new System.EventHandler(this.Sociout_Load);
@@ -220,5 +236,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpGebruikersZoeken;
         private System.Windows.Forms.TabPage tpBerichtAanmaken;
         private System.Windows.Forms.FlowLayoutPanel flpVolgend;
+        private System.Windows.Forms.Button btnLoguit;
     }
 }

@@ -177,7 +177,7 @@ namespace SocialMedia___Sociout
         #region Persoonlijk
         private void Persoonlijk_Load()
         {
-            tpPersoonlijk.Controls.Add(new ProfielUserControl(gebruiker, this, gebruikersId.ToString() ,true) { Dock = DockStyle.Fill });
+            tpPersoonlijk.Controls.Add(new ProfielUserControl(gebruiker, this, gebruikersId.ToString(), true) { Dock = DockStyle.Fill });
         }
         #endregion
         #region Bericht Aanmaken
@@ -187,5 +187,12 @@ namespace SocialMedia___Sociout
         }
 
         #endregion
+
+        private void btnLoguit_Click(object sender, EventArgs e)
+        {
+            InlogForm m = new InlogForm();
+            m.Show();
+            this.Hide();
+        }
     }
 }
