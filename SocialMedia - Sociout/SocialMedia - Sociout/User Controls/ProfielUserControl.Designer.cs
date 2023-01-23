@@ -58,7 +58,6 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(700, 75);
             this.pnlHeader.TabIndex = 0;
-            this.pnlHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlHeader_Paint);
             // 
             // btnVolgen
             // 
@@ -79,7 +78,7 @@
             this.lblProfielNaam.Location = new System.Drawing.Point(104, 30);
             this.lblProfielNaam.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProfielNaam.Name = "lblProfielNaam";
-            this.lblProfielNaam.Size = new System.Drawing.Size(268, 39);
+            this.lblProfielNaam.Size = new System.Drawing.Size(214, 31);
             this.lblProfielNaam.TabIndex = 1;
             this.lblProfielNaam.Text = "Gebruikersnaam";
             // 
@@ -99,8 +98,8 @@
             this.tc.Controls.Add(this.tpLiked);
             this.tc.Controls.Add(this.tpVolgt);
             this.tc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tc.Location = new System.Drawing.Point(0, 92);
-            this.tc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tc.Location = new System.Drawing.Point(0, 75);
+            this.tc.Margin = new System.Windows.Forms.Padding(4);
             this.tc.Name = "tc";
             this.tc.SelectedIndex = 0;
             this.tc.Size = new System.Drawing.Size(700, 397);
@@ -109,7 +108,7 @@
             // tpLaatste
             // 
             this.tpLaatste.Controls.Add(this.flpLaatste);
-            this.tpLaatste.Location = new System.Drawing.Point(4, 25);
+            this.tpLaatste.Location = new System.Drawing.Point(4, 22);
             this.tpLaatste.Margin = new System.Windows.Forms.Padding(0);
             this.tpLaatste.Name = "tpLaatste";
             this.tpLaatste.Size = new System.Drawing.Size(692, 371);
@@ -129,7 +128,7 @@
             // tpLiked
             // 
             this.tpLiked.Controls.Add(this.flpGeliked);
-            this.tpLiked.Location = new System.Drawing.Point(4, 25);
+            this.tpLiked.Location = new System.Drawing.Point(4, 22);
             this.tpLiked.Margin = new System.Windows.Forms.Padding(0);
             this.tpLiked.Name = "tpLiked";
             this.tpLiked.Size = new System.Drawing.Size(692, 371);
@@ -149,10 +148,10 @@
             // tpVolgt
             // 
             this.tpVolgt.Controls.Add(this.flpVolgt);
-            this.tpVolgt.Location = new System.Drawing.Point(4, 25);
+            this.tpVolgt.Location = new System.Drawing.Point(4, 22);
             this.tpVolgt.Margin = new System.Windows.Forms.Padding(0);
             this.tpVolgt.Name = "tpVolgt";
-            this.tpVolgt.Size = new System.Drawing.Size(844, 371);
+            this.tpVolgt.Size = new System.Drawing.Size(692, 371);
             this.tpVolgt.TabIndex = 2;
             this.tpVolgt.Text = "Volgt";
             this.tpVolgt.UseVisualStyleBackColor = true;
@@ -162,7 +161,7 @@
             this.flpVolgt.AutoScroll = true;
             this.flpVolgt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpVolgt.Location = new System.Drawing.Point(0, 0);
-            this.flpVolgt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpVolgt.Margin = new System.Windows.Forms.Padding(4);
             this.flpVolgt.Name = "flpVolgt";
             this.flpVolgt.Size = new System.Drawing.Size(692, 371);
             this.flpVolgt.TabIndex = 1;
@@ -173,7 +172,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.tc);
             this.Controls.Add(this.pnlHeader);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ProfielUserControl";
             this.Size = new System.Drawing.Size(700, 472);
             this.Load += new System.EventHandler(this.ProfielUserControl_Load);

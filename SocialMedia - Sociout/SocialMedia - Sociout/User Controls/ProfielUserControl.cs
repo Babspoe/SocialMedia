@@ -91,10 +91,5 @@ namespace SocialMedia___Sociout.User_Controls
                     break;
             }
         }
-
-        private void pnlHeader_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
