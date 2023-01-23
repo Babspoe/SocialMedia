@@ -72,7 +72,7 @@ namespace SocialMedia___Sociout.User_Controls
         {
             foreach (var post in parent.db.SelectBericht(bo, Convert.ToInt32(gebruiker.id)))
             {
-                var control = new PostUserControl(post, Convert.ToInt32(gebruiker.id));
+                var control = new PostUserControl(post, Convert.ToInt32(user));
                 control.OpenReacties += new EventHandler(parent.OpenReactions);
                 control.OpenProfile += new EventHandler(parent.OpenProfile);
                 flp.Controls.Add(control);

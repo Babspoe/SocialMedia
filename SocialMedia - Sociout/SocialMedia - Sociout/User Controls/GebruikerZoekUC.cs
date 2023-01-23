@@ -61,12 +61,14 @@ namespace SocialMedia___Sociout.User_Controls
                 db.InsertVolger(newvolger);
                 MessageBox.Show("Je volgt nu " + naamp);
                 button1.Text = "Ontvolgen";
+                lblVolgers.Text = (Convert.ToInt32(lblVolgers.Text) + 1).ToString();
             }
             else
             {
                 db.DeleteVolger(gebruiker, id.ToString());
                 MessageBox.Show("Je volgt nu niet meer " + naamp);
                 button1.Text = "Volgen";
+                lblVolgers.Text = (Convert.ToInt32(lblVolgers.Text) - 1).ToString();
             }
             
         }

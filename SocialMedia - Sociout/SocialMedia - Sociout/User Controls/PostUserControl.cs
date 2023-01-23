@@ -134,12 +134,14 @@ namespace SocialMedia___Sociout.User_Controls
                 db.InsertLike(newlike);
                 MessageBox.Show("Geliked");
                 btnLike.Text = "Unlike";
+                lblLikes.Text = (Convert.ToInt32(lblLikes.Text) + 1).ToString();
             }
             else
             {
                 db.DeleteLike(bericht.id.ToString(), gebruikerId);
                 MessageBox.Show("Niet meer geliked");
                 btnLike.Text = "like";
+                lblLikes.Text = (Convert.ToInt32(lblLikes.Text) - 1).ToString();
             }
             
         }
