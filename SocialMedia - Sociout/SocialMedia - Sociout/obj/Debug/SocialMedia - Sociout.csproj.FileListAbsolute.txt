@@ -79,3 +79,5 @@ C:\Users\HP850G5\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - So
 C:\Users\HP850G5\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia___Sociout.User_Controls.ProfielUserControl.resources
 C:\Users\HP850G5\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia___Sociout.User_Controls.GebruikerZoekUC.resources
 C:\Users\HP850G5\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia___Sociout.User_Controls.CreatePostUserControl.resources
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia___Sociout.User_Controls.CreatePostUserControl.resources
+C:\Users\van Bennekom\source\repos\SocialMedia\SocialMedia - Sociout\SocialMedia - Sociout\obj\Debug\SocialMedia___Sociout.User_Controls.ReactiesUserControl.resources

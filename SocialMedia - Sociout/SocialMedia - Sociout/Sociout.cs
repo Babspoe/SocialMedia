@@ -116,7 +116,22 @@ namespace SocialMedia___Sociout
 
         public void OpenReactions(object sender, EventArgs e)
         {
-            //Naar Reacties van bericht
+            if (tcPaginas.TabPages.ContainsKey("tpReacties"))
+            {
+                tcPaginas.TabPages.RemoveByKey("tpReacties");
+            }
+            var post = (Control)sender;
+            while (!(post is PostUserControl))
+            {
+                post = post.Parent;
+            }
+            var puc = (PostUserControl)post;
+
+            var page = new TabPage();
+            //bericht b, List<bericht> r, gebruiker g, Sociout parent
+            page.Controls.Add(new ReactiesUserControl(puc.bericht, db.SelectBericht(BerichtenOpvraag.Reacties, puc.bericht.id), gebruiker, this ) { Dock = DockStyle.Fill, Name = "tpReacties", Text = "Reacties" });
+            page.Parent = tcPaginas;
+            tcPaginas.SelectTab(page);
         }
 
         public void OpenProfile(object sender, EventArgs e)

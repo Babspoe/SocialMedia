@@ -48,7 +48,8 @@ namespace dbLibrary
         Alles,
         Geliked,
         Volgt,
-        Gebruiker
+        Gebruiker,
+        Reacties
     }
 
 
@@ -282,7 +283,7 @@ namespace dbLibrary
             return ret;
         }
 
-        public List<bericht> SelectBericht(BerichtenOpvraag bo, int gebruikerId = 0)
+        public List<bericht> SelectBericht(BerichtenOpvraag bo, int Id = 0)
         {
             string query = "";
             switch (bo)
@@ -300,7 +301,7 @@ GROUP BY b.Id";
 $@"SELECT b.id,COUNT(l.Gebruiker_Id) Likes, b.Afbeelding ,Tekst, g.Afbeelding pfp, g.Gebruikersnaam, b.Gebruiker_Id FROM bericht b
 LEFT JOIN `like` l ON b.Id = l.Bericht_Id
 INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
-WHERE b.Bericht_Id = 0 AND b.Gebruiker_Id IN (SELECT Volgend FROM volger WHERE volger = {gebruikerId})
+WHERE b.Bericht_Id = 0 AND b.Gebruiker_Id IN (SELECT Volgend FROM volger WHERE volger = {Id})
 GROUP BY b.Id";
                     break;
                 case BerichtenOpvraag.Geliked:
@@ -308,7 +309,7 @@ GROUP BY b.Id";
 $@"SELECT b.id,COUNT(l.Gebruiker_Id) Likes, b.Afbeelding ,Tekst, g.Afbeelding pfp, g.Gebruikersnaam, b.Gebruiker_Id FROM bericht b
 LEFT JOIN `like` l ON b.Id = l.Bericht_Id
 INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
-WHERE b.Bericht_Id = 0 AND l.Gebruiker_Id = {gebruikerId}
+WHERE b.Bericht_Id = 0 AND l.Gebruiker_Id = {Id}
 GROUP BY b.Id";
                     break;
                 case BerichtenOpvraag.Gebruiker:
@@ -316,7 +317,15 @@ GROUP BY b.Id";
 $@"SELECT b.Id,COUNT(l.Gebruiker_Id) Likes, b.Afbeelding ,Tekst, g.Afbeelding pfp, g.Gebruikersnaam, b.Gebruiker_Id FROM bericht b
 LEFT JOIN `like` l ON b.Id = l.Bericht_Id
 INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
-WHERE b.Bericht_Id = 0 AND b.Gebruiker_Id = {gebruikerId}
+WHERE b.Bericht_Id = 0 AND b.Gebruiker_Id = {Id}
+GROUP BY b.Id";
+                    break;
+                case BerichtenOpvraag.Reacties:
+                    query =
+$@"SELECT b.Id,COUNT(l.Gebruiker_Id) Likes, b.Afbeelding ,Tekst, g.Afbeelding pfp, g.Gebruikersnaam, b.Gebruiker_Id FROM bericht b
+LEFT JOIN `like` l ON b.Id = l.Bericht_Id
+INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
+WHERE b.Bericht_Id = {Id}
 GROUP BY b.Id";
                     break;
             }
@@ -343,6 +352,10 @@ GROUP BY b.Id";
                         Afbeelding = dataReader["pfp"] == DBNull.Value ? null : (byte[])dataReader["pfp"]
                     }
                 };
+                if(bo == BerichtenOpvraag.Reacties)
+                {
+                    newdbResponse.berichtId = Id;
+                }
                 list.Add(newdbResponse);
             }
             dataReader.Close();
