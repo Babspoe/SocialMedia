@@ -88,6 +88,12 @@
     <Compile Include="User Controls\ProfielUserControl.Designer.cs">
       <DependentUpon>ProfielUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="User Controls\ReactiesUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\ReactiesUserControl.Designer.cs">
+      <DependentUpon>ReactiesUserControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="InlogForm.resx">
       <DependentUpon>InlogForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User Controls\GebruikerZoekUC.resx">
       <DependentUpon>GebruikerZoekUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\ReactiesUserControl.resx">
+      <DependentUpon>ReactiesUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

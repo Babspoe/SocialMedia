@@ -57,6 +57,13 @@ namespace SocialMedia___Sociout.User_Controls
         string gebruikerId;
         private void PostUserControl_Load(object sender, EventArgs e)
         {
+            if(bericht.berichtId != 0)
+            {
+                btnReactions.Hide();
+                btnLike.Hide();
+                lblLikes.Hide();
+            }
+
             //ParseLine(bericht.Tekst);
             rtxtTekst.Text = bericht.Tekst;
             lblGebruikersnaam.Text = bericht.gebruiker.Gebruikersnaam;
