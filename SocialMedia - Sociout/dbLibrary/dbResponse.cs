@@ -310,7 +310,7 @@ $@"SELECT b.id,COUNT(l1.Gebruiker_Id) Likes, b.Afbeelding ,Tekst, g.Afbeelding p
 LEFT JOIN `like` l1 ON b.Id = l1.Bericht_Id
 LEFT JOIN `like` l2 ON b.Id = l2.Bericht_Id
 INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
-WHERE b.Bericht_Id = 0 AND l.Gebruiker_Id = {Id}
+WHERE b.Bericht_Id = 0 AND l2.Gebruiker_Id = {Id}
 GROUP BY b.Id";
                     break;
                 case BerichtenOpvraag.Gebruiker:

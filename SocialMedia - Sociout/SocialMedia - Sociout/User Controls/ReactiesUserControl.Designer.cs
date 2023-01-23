@@ -74,8 +74,8 @@
             // 
             this.tpReacties.Controls.Add(this.flpReacties);
             this.tpReacties.Location = new System.Drawing.Point(4, 22);
+            this.tpReacties.Margin = new System.Windows.Forms.Padding(0);
             this.tpReacties.Name = "tpReacties";
-            this.tpReacties.Padding = new System.Windows.Forms.Padding(3);
             this.tpReacties.Size = new System.Drawing.Size(541, 226);
             this.tpReacties.TabIndex = 0;
             this.tpReacties.Text = "Reacties";
@@ -84,8 +84,8 @@
             // tpAddReactie
             // 
             this.tpAddReactie.Location = new System.Drawing.Point(4, 22);
+            this.tpAddReactie.Margin = new System.Windows.Forms.Padding(0);
             this.tpAddReactie.Name = "tpAddReactie";
-            this.tpAddReactie.Padding = new System.Windows.Forms.Padding(3);
             this.tpAddReactie.Size = new System.Drawing.Size(541, 226);
             this.tpAddReactie.TabIndex = 1;
             this.tpAddReactie.Text = "Aanmaken";
@@ -96,10 +96,10 @@
             this.flpReacties.AutoScroll = true;
             this.flpReacties.AutoSize = true;
             this.flpReacties.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpReacties.Location = new System.Drawing.Point(3, 3);
+            this.flpReacties.Location = new System.Drawing.Point(0, 0);
             this.flpReacties.Margin = new System.Windows.Forms.Padding(0);
             this.flpReacties.Name = "flpReacties";
-            this.flpReacties.Size = new System.Drawing.Size(535, 220);
+            this.flpReacties.Size = new System.Drawing.Size(541, 226);
             this.flpReacties.TabIndex = 0;
             // 
             // ReactiesUserControl
