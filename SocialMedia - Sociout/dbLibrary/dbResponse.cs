@@ -316,7 +316,8 @@ namespace dbLibrary
 LEFT JOIN `like` l ON b.Id = l.Bericht_Id
 INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
 WHERE b.Bericht_Id = 0
-GROUP BY b.Id";
+GROUP BY b.Id
+ORDER BY b.id DESC";
                     break;
                 case BerichtenOpvraag.Volgt:
                     query =
@@ -324,7 +325,8 @@ $@"SELECT b.id,COUNT(l.Gebruiker_Id) Likes, b.Afbeelding ,Tekst, g.Afbeelding pf
 LEFT JOIN `like` l ON b.Id = l.Bericht_Id
 INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
 WHERE b.Bericht_Id = 0 AND b.Gebruiker_Id IN (SELECT Volgend FROM volger WHERE volger = {Id})
-GROUP BY b.Id";
+GROUP BY b.Id
+ORDER BY b.id DESC";
                     break;
                 case BerichtenOpvraag.Geliked:
                     query =
@@ -333,7 +335,8 @@ LEFT JOIN `like` l1 ON b.Id = l1.Bericht_Id
 LEFT JOIN `like` l2 ON b.Id = l2.Bericht_Id
 INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
 WHERE b.Bericht_Id = 0 AND l2.Gebruiker_Id = {Id}
-GROUP BY b.Id";
+GROUP BY b.Id
+ORDER BY b.id DESC";
                     break;
                 case BerichtenOpvraag.Gebruiker:
                     query =
@@ -341,7 +344,8 @@ $@"SELECT b.Id,COUNT(l.Gebruiker_Id) Likes, b.Afbeelding ,Tekst, g.Afbeelding pf
 LEFT JOIN `like` l ON b.Id = l.Bericht_Id
 INNER JOIN gebruiker g ON b.Gebruiker_Id = g.Id
 WHERE b.Bericht_Id = 0 AND b.Gebruiker_Id = {Id}
-GROUP BY b.Id";
+GROUP BY b.Id
+ORDER BY b.id DESC";
                     break;
                 case BerichtenOpvraag.Reacties:
                     query =
