@@ -478,11 +478,10 @@ VALUES ('{insert.Tekst}',@afbeelding ,{insert.gebruiker.id})";
 
         public void InsertGebruiker(gebruiker insert)//, byte[] img
         {
-            string query = "INSERT INTO `gebruiker`(`Gebruikersnaam`, `Email`, `Wachtwoord`, `Afbeelding`) VALUES ('"+insert.Gebruikersnaam+ "','"+insert.Email+ "','"+insert.Wachtwoord+"', @afbeelding)";
+            string query = "INSERT INTO `gebruiker`(`Gebruikersnaam`, `Email`, `Wachtwoord`) VALUES ('"+insert.Gebruikersnaam+ "','"+insert.Email+ "','"+insert.Wachtwoord+"')";
             connection.Open();
 
             MySqlCommand cmd = new MySqlCommand(query, connection);
-            cmd.Parameters.Add("@afbeelding", MySqlDbType.MediumBlob, insert.Afbeelding.Length).Value = insert.Afbeelding;
             cmd.ExecuteNonQuery();
 
             //image

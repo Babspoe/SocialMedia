@@ -46,6 +46,8 @@ namespace SocialMedia___Sociout.User_Controls
 
             parent.db.InsertBericht(bericht);
             MessageBox.Show("Gepost");
+            richTextBox1.Text = "";
+            pictureBox1.Image = null;
             
         }
 
