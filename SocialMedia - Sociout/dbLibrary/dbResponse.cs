@@ -368,7 +368,7 @@ GROUP BY b.Id";
 
         public gebruiker SelectGebruiker(int id = 1)
         {
-            string query = $"SELECT Gebruikersnaam,Afbeelding FROM `gebruiker` WHERE Id = {id}";
+            string query = $"SELECT `Gebruikersnaam`, `Email`, `Wachtwoord`, `Afbeelding` FROM `gebruiker` WHERE Id = {id}";
 
             //List<dbResponse> list = new List<dbResponse>();
             var ret = new gebruiker();
@@ -383,6 +383,8 @@ GROUP BY b.Id";
                 {
                     id = id.ToString(),
                     Gebruikersnaam = (string)dataReader["Gebruikersnaam"],
+                    Email = (string)dataReader["Email"],
+                    Wachtwoord = (string)dataReader["Wachtwoord"],
                     Afbeelding = dataReader["Afbeelding"] == DBNull.Value ? null : (byte[])dataReader["Afbeelding"]
                 };
             }
@@ -452,10 +454,15 @@ VALUES ('{insert.Tekst}',@afbeelding ,{insert.gebruiker.id})";
 
         public void InsertGebruiker(gebruiker insert)//, byte[] img
         {
-            string query = "INSERT INTO `gebruiker`(`Gebruikersnaam`, `Email`, `Wachtwoord`) VALUES ('"+insert.Gebruikersnaam+ "','"+insert.Email+ "','"+insert.Wachtwoord+"')";
+            string query = "INSERT INTO `gebruiker`(`Gebruikersnaam`, `Email`, `Wachtwoord`, `Afbeelding`) VALUES ('" + insert.Gebruikersnaam+ "','"+insert.Email+ "','"+insert.Wachtwoord+ "',@afbeelding)";
+
             connection.Open();
 
             MySqlCommand cmd = new MySqlCommand(query, connection);
+            if (insert.Afbeelding.Length != 0)
+            {
+                cmd.Parameters.Add("@afbeelding", MySqlDbType.MediumBlob, insert.Afbeelding.Length).Value = insert.Afbeelding;
+            }
             cmd.ExecuteNonQuery();
 
             //image
@@ -532,6 +539,19 @@ VALUES ('{insert.Tekst}',@afbeelding ,{insert.gebruiker.id})";
         public void Update(string[] insert, string name)
         {
             string query = "";
+
+            connection.Open();
+
+            //run mysql command
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
+
+            connection.Close();
+        }
+
+        public void UpdateGebruiker(gebruiker insert)
+        {
+            string query = "UPDATE `gebruiker` SET `Gebruikersnaam`='"+insert.Gebruikersnaam+ "',`Email`='"+insert.Email+ "',`Wachtwoord`='"+insert.Wachtwoord+ "',`Afbeelding`='"+insert.Afbeelding+ "' WHERE `Gebruikersnaam` = '"+insert.Gebruikersnaam+"'";
 
             connection.Open();
 

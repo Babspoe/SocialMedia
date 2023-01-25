@@ -204,7 +204,8 @@ namespace SocialMedia___Sociout
 
         private void tsmiProfiel_Click(object sender, EventArgs e)
         {
-
+            //profiel code
+            tcPaginas.SelectTab("tpPersoonlijk");
         }
 
         private void tsmiUitlog_Click(object sender, EventArgs e)
