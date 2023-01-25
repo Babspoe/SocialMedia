@@ -551,12 +551,16 @@ VALUES ('{insert.Tekst}',@afbeelding ,{insert.gebruiker.id})";
 
         public void UpdateGebruiker(gebruiker insert)
         {
-            string query = "UPDATE `gebruiker` SET `Gebruikersnaam`='"+insert.Gebruikersnaam+ "',`Email`='"+insert.Email+ "',`Wachtwoord`='"+insert.Wachtwoord+ "',`Afbeelding`='"+insert.Afbeelding+ "' WHERE `Gebruikersnaam` = '"+insert.Gebruikersnaam+"'";
+            string query = "UPDATE `gebruiker` SET `Gebruikersnaam`='"+insert.Gebruikersnaam+ "',`Email`='"+insert.Email+ "',`Wachtwoord`='"+insert.Wachtwoord+ "',`Afbeelding`='@afbeelding' WHERE `Gebruikersnaam` = '"+insert.Gebruikersnaam+"'";
 
             connection.Open();
 
             //run mysql command
             MySqlCommand cmd = new MySqlCommand(query, connection);
+            if (insert.Afbeelding.Length != 0)
+            {
+                cmd.Parameters.Add("@afbeelding", MySqlDbType.MediumBlob, insert.Afbeelding.Length).Value = insert.Afbeelding;
+            }
             cmd.ExecuteNonQuery();
 
             connection.Close();
