@@ -12,6 +12,7 @@ namespace SocialMedia___Sociout
     public partial class Sociout : Form
     {
         private gebruiker gebruiker;
+        private int laatsteCheckAantal = 0;
         int gebruikersId
         { 
             get
@@ -69,6 +70,10 @@ namespace SocialMedia___Sociout
             {
                 tpZoeken.Parent = null;
             }
+            if(tc.SelectedTab == tpHome)
+            {
+                Homepage_Load();
+            }
 
         }
 
@@ -104,15 +109,21 @@ namespace SocialMedia___Sociout
         #region Homepage
         private void Homepage_Load()
         {
-            flpHomePage.Controls.Clear();
-
-            foreach (var post in db.SelectBericht(BerichtenOpvraag.Alles))
+            var check = db.SelectCheckNewBerichten();
+            if(check > laatsteCheckAantal)
             {
-                var control = new PostUserControl(post,gebruikersId);
-                control.OpenReacties += new EventHandler(OpenReactions);
-                control.OpenProfile += new EventHandler(OpenProfile);
-                flpHomePage.Controls.Add(control);
+                laatsteCheckAantal = check;
+
+                flpHomePage.Controls.Clear();
+                foreach (var post in db.SelectBericht(BerichtenOpvraag.Alles))
+                {
+                    var control = new PostUserControl(post, gebruikersId);
+                    control.OpenReacties += new EventHandler(OpenReactions);
+                    control.OpenProfile += new EventHandler(OpenProfile);
+                    flpHomePage.Controls.Add(control);
+                }
             }
+            
         }
 
         public void OpenReactions(object sender, EventArgs e)
@@ -219,7 +230,7 @@ namespace SocialMedia___Sociout
         {
             if (e.Button == MouseButtons.Left)
             {
-                pbProfiel.ContextMenuStrip.Show();
+                pbProfiel.ContextMenuStrip.Show(pbProfiel, e.Location);
             }
         }
     }

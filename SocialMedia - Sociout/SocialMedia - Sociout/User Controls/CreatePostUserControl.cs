@@ -53,7 +53,7 @@ namespace SocialMedia___Sociout.User_Controls
         {
             if(berichtId != 0)
             {
-                splitContainer1.Panel2Collapsed = true;
+                splitContainer1.Panel1Collapsed = true;
             }
         }
     }
