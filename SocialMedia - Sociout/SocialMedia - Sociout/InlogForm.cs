@@ -48,7 +48,7 @@ namespace SocialMedia___Sociout
             {
                 if (IsValidEmail(tbREmail.Text))
                 {
-                    MessageBox.Show(db.SelectCheckLogin(tbRNaam.Text));
+                    //MessageBox.Show(db.SelectCheckLogin(tbRNaam.Text));
                     if (db.SelectCheckLogin(tbRNaam.Text) == "")
                     {
                         gebruiker newgebruiker = new gebruiker
@@ -56,6 +56,7 @@ namespace SocialMedia___Sociout
                             Gebruikersnaam = tbRNaam.Text,
                             Email = tbREmail.Text,
                             Wachtwoord = Encrypt(tbRWachtwoord.Text),
+                            Afbeelding = ImageToByteArray(pictureBox1.Image),
                         };
                         db.InsertGebruiker(newgebruiker);
 
@@ -132,6 +133,17 @@ namespace SocialMedia___Sociout
             catch
             {
                 return false;
+            }
+        }
+
+        private void btnFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            //For any other formats
+            of.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+            if (of.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.ImageLocation = of.FileName;
             }
         }
     }
