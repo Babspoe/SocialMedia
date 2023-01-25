@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dbLibrary;
+using static SocialMedia___Sociout.StaticFunctions;
 
 namespace SocialMedia___Sociout
 {
@@ -55,6 +56,7 @@ namespace SocialMedia___Sociout
                             Gebruikersnaam = tbRNaam.Text,
                             Email = tbREmail.Text,
                             Wachtwoord = Encrypt(tbRWachtwoord.Text),
+                            Afbeelding = ImageToByteArray(GetImage(tbRNaam.Text))
                         };
                         db.InsertGebruiker(newgebruiker);
 
