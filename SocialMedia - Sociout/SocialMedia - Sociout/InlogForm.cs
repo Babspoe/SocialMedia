@@ -56,7 +56,6 @@ namespace SocialMedia___Sociout
                             Gebruikersnaam = tbRNaam.Text,
                             Email = tbREmail.Text,
                             Wachtwoord = Encrypt(tbRWachtwoord.Text),
-                            Afbeelding = ImageToByteArray(GetImage(tbRNaam.Text))
                         };
                         db.InsertGebruiker(newgebruiker);
 
