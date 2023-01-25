@@ -45,6 +45,8 @@ namespace SocialMedia___Sociout.User_Controls
             };
 
             parent.db.InsertBericht(bericht);
+            MessageBox.Show("Gepost");
+            
         }
 
         private void CreatePostUserControl_Load(object sender, EventArgs e)
