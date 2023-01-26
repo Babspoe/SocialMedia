@@ -19,6 +19,7 @@ namespace SocialMedia___Sociout.User_Controls
         public gebruiker gebruiker;
         private Sociout parent;
         string user;
+        bool IsMijzelf = false;
         public ProfielUserControl()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace SocialMedia___Sociout.User_Controls
             gebruiker = g;
             parent = p;
             user = User;
+            IsMijzelf = isMijzelf;
             InitializeComponent();
             if (isMijzelf)
             {
@@ -68,11 +70,14 @@ namespace SocialMedia___Sociout.User_Controls
                  newUC.ToProfiel = parent.OpenProfile;
                 flpVolgt.Controls.Add(newUC);
             }
+            if (IsMijzelf)
+            {
+                tbNaam.Text = gebruiker.Gebruikersnaam;
+                tbEmail.Text = gebruiker.Email;
+                tbWachtwoord.Text = Decrypt(gebruiker.Wachtwoord);
+                pictureBox1.Image = ByteArrayToImage(gebruiker.Afbeelding);
+            }
 
-            tbNaam.Text = gebruiker.Gebruikersnaam;
-            tbEmail.Text = gebruiker.Email;
-            tbWachtwoord.Text = Decrypt(gebruiker.Wachtwoord);
-            pictureBox1.Image = ByteArrayToImage(gebruiker.Afbeelding);
         }
 
         private void SetVolgend()
