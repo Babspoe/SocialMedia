@@ -54,8 +54,8 @@ namespace SocialMedia___Sociout.User_Controls
                 //maak volger
                 volger newvolger = new volger()
                 {
-                    Volgend = gebruiker,
-                    Volger = id.ToString(),
+                    Volgend = id.ToString(),
+                    Volger = gebruiker,
                     Datum = DateTime.Now,
                 };
                 db.InsertVolger(newvolger);
@@ -65,7 +65,7 @@ namespace SocialMedia___Sociout.User_Controls
             }
             else
             {
-                db.DeleteVolger(gebruiker, id.ToString());
+                db.DeleteVolger(id.ToString(), gebruiker);
                 MessageBox.Show("Je volgt nu niet meer " + naamp);
                 button1.Text = "Volgen";
                 lblVolgers.Text = (Convert.ToInt32(lblVolgers.Text) - 1).ToString();

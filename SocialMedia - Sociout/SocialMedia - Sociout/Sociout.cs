@@ -74,6 +74,10 @@ namespace SocialMedia___Sociout
             {
                 Homepage_Load();
             }
+            if(tc.SelectedTab == tpVolgend)
+            {
+                Volgend_Load();
+            }
 
         }
 
@@ -189,6 +193,7 @@ namespace SocialMedia___Sociout
         #region Volgend
         private void Volgend_Load()
         {
+            flpVolgend.Controls.Clear();
             foreach (var post in db.SelectBericht(BerichtenOpvraag.Volgt, gebruikersId))
             {
                 var control = new PostUserControl(post, gebruikersId);
