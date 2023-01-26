@@ -139,8 +139,8 @@ namespace SocialMedia___Sociout
             }
             var puc = (PostUserControl)post;
 
-            var page = new TabPage() { Parent = tcPaginas };
-            page.Controls.Add(new ReactiesUserControl(puc.bericht, db.SelectBericht(BerichtenOpvraag.Reacties, puc.bericht.id), gebruiker, this ) { Dock = DockStyle.Fill, Name = "tpReacties", Text = "Reacties" });
+            var page = new TabPage() { Parent = tcPaginas, Name = "tpReacties", Text = "Reacties" };
+            page.Controls.Add(new ReactiesUserControl(puc.bericht, db.SelectBericht(BerichtenOpvraag.Reacties, puc.bericht.id), gebruiker, this ) { Dock = DockStyle.Fill});
             tcPaginas.SelectTab(page);
         }
 
